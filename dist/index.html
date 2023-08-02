@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,40 +8,61 @@
   <title>Webpack Starter Kit</title>
   <script src="https://kit.fontawesome.com/c0bac25450.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <nav>
-    <div class="left-nav-bar-section">
-    <div>
-      <i class="fa-solid fa-house" style="color: #000000;"></i>
-      <label>Home</label>
+
+    <div class="login-wrapper login">
+      <p class="login"><i class="fa-solid fa-user login" style="color: #000000;"></i>Login</p>
     </div>
-    <div>
-      <i class="fa-solid fa-plane" style="color: #000000;"></i>
-      <label>New Booking</label>
+
+
+    <div class="main-nav-wrapper dashboard hidden">
+      <div class="left-nav-bar-section">
+        <div>
+          <i class="fa-solid fa-house" style="color: #000000;"></i>
+          <label>Home</label>
+        </div>
+        <div>
+          <i class="fa-solid fa-plane" style="color: #000000;"></i>
+          <label>New Booking</label>
+        </div>
+      </div>
+      <div class="user-icon">
+        <i class="fa-solid fa-user" style="color: #000000;"></i>
+        <label class="user-name">User Name</label>
+      </div>
     </div>
-    </div>
-    <div class="user-icon">
-      <i class="fa-solid fa-user" style="color: #000000;"></i>
-      <label class="user-name">User Name</label>
-    </div>
+
   </nav>
   <main>
-  <section class="dashboard-view">
-    <h1>Dashboard</h1>
-    <h2 class="display-user-spending">You have spent --- on past bookings</h2>
-    <h2>You have spent --- on bookings this year</h2>
-    <div class="user-trip-grid">
-    </div>
-    <article class="past-trips">
-    </article>
-    <article class="upcoming-trips">
-    </article>
-  </section>
-</main>
+    <section class="login-page login">
+      <h1>Welcome</h1>
+      <button class="login-button">Login</button>
+    </section>
+
+    <section class="dashboard-view dashboard hidden">
+      <div class="user-stats-wrapper">
+        <h1>Dashboard</h1>
+        <h2 class="display-user-spending">You have spent --- on past bookings</h2>
+        <h2>You have spent $0 on traveling this year.</h2>
+      </div>
+      <div class="grid-wrapper">
+        <h2>Past trips</h2>
+        <div class="user-trip-grid">
+        </div>
+      </div>
+      <article class="past-trips">
+      </article>
+      <article class="upcoming-trips">
+      </article>
+    </section>
+  </main>
   <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
-  
+
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 
 </body>
+
 </html>

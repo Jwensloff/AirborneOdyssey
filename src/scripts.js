@@ -12,22 +12,26 @@ import { createFetchRequests } from './apiCalls';
 import { findUsersTrips, 
   getCurrentUserInformation, 
   findUserTripDestinations,
-  calculateUserSpending,
+  calculateTotalUserSpending,
  } from './functions';
 
 import { displayUserName,
   displayUserSpending,
   displayUserTrips,
+  showMainPage,
+  loginButton, 
  } from './domUpdates';
 
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
+// event listeners 
+loginButton.addEventListener('click', showMainPage)
 
 
 // create Data
 let masterData = {
-  currentUserId: 2,
+  currentUserId: 19,
   today: dayjs().format('YYYY/MM/DD'),
 }
 
@@ -47,7 +51,7 @@ const generateWebPage = () => {
   displayUserName(masterData.currentUser)
   console.log(findUsersTrips(masterData.currentUserId, masterData.trips))
   console.log(findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations))
-  console.log(calculateUserSpending(findUsersTrips(masterData.currentUserId, masterData.trips), findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations)))
-  displayUserSpending(calculateUserSpending(findUsersTrips(masterData.currentUserId, masterData.trips), findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations)))
-  displayUserTrips(findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations))
+  console.log(calculateTotalUserSpending(findUsersTrips(masterData.currentUserId, masterData.trips), findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations)))
+  displayUserSpending(calculateTotalUserSpending(findUsersTrips(masterData.currentUserId, masterData.trips), findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations)))
+  displayUserTrips(findUsersTrips(masterData.currentUserId, masterData.trips),findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations))
 };

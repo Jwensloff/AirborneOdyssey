@@ -1,28 +1,83 @@
 body {
-  background: peachpuff;
+  margin: 0;
+  padding: 0;
+  /* background: peachpuff; */
+  background-image: url('../images/aaron-burden--3Dc-I-65ug-unsplash.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-position: center; */
 }
 
 nav {
   display:flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
   height: 10vh;
   border-bottom: 1px solid black;
+  padding-left: 20px;
+  padding-right: 30px;
 }
 
 .left-nav-bar-section{
   display: flex;
+  /* border: 1px solid black; */
+
 }
 
-/* .user-icon{
+.main-nav-wrapper{
   display: flex;
-} */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid black; */
+}
+
+.hidden{
+  display: none;
+}
+
+.login-wrapper{
+  width: 100%;
+  /* height: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* border: 1px solid black; */
+
+}
+
+.fa-solid{
+  margin-right: 5px;
+  margin-left: 30px;
+}
+
+.user-icon{
+  display: flex;
+  /* border: 1px solid black; */
+
+}
 
  /* .saved-posters {
   padding: 40px;
 } */
+.user-stats-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-wrapper{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .user-trip-grid {
+  width: 60%;
   display: flex;
   overflow-x: scroll;
   grid-gap: 20px;
@@ -30,16 +85,18 @@ nav {
 } 
 
 .destination-card {
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  background-color: white;
   color: black;
   height: 300px;
   /* padding: 25px; */
   width: 250px;
   border-radius: 15px;
+  flex-shrink: 0;
 }
 
 .destination-card img {
-  height:auto;
+  height: 40%;
   width: 100%;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
