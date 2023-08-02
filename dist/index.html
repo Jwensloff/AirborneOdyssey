@@ -5,22 +5,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webpack Starter Kit</title>
+  <script src="https://kit.fontawesome.com/c0bac25450.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <nav>
+    <div class="left-nav-bar-section">
     <div>
-      <img>
-      <label></label>
+      <i class="fa-solid fa-house" style="color: #000000;"></i>
+      <label>Home</label>
     </div>
     <div>
-      <img>
-      <label></label>
+      <i class="fa-solid fa-plane" style="color: #000000;"></i>
+      <label>New Booking</label>
+    </div>
+    </div>
+    <div class="user-icon">
+      <i class="fa-solid fa-user" style="color: #000000;"></i>
+      <label class="user-name">User Name</label>
     </div>
   </nav>
   <main>
   <section class="dashboard-view">
     <h1>Dashboard</h1>
-    <h2>So far you have spent ------ on your trips!</h2>
+    <h2 class="display-user-spending">You have spent --- on past bookings</h2>
+    <h2>You have spent --- on bookings this year</h2>
+    <div class="user-trip-grid">
+    </div>
     <article class="past-trips">
     </article>
     <article class="upcoming-trips">

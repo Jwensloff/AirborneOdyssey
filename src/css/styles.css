@@ -1,3 +1,64 @@
 body {
   background: peachpuff;
 }
+
+nav {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  border-bottom: 1px solid black;
+}
+
+.left-nav-bar-section{
+  display: flex;
+}
+
+/* .user-icon{
+  display: flex;
+} */
+
+ /* .saved-posters {
+  padding: 40px;
+} */
+
+.user-trip-grid {
+  display: flex;
+  overflow-x: scroll;
+  grid-gap: 20px;
+  padding: 20px;
+} 
+
+.destination-card {
+  border: 1px solid black;
+  color: black;
+  height: 300px;
+  /* padding: 25px; */
+  width: 250px;
+  border-radius: 15px;
+}
+
+.destination-card img {
+  height:auto;
+  width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* .destination-card h2,
+.destination-card h4,
+.delete {
+  color: white;
+  line-height: 1;
+  width: 90%;
+} */
+
+/* .destination-card h2 {
+  font-size: 30px;
+  font-weight: normal;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+} */
