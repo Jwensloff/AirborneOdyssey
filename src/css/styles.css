@@ -1,17 +1,15 @@
 body {
   margin: 0;
   padding: 0;
-  /* background: peachpuff; */
   background-image: url('../images/aaron-burden--3Dc-I-65ug-unsplash.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  /* background-position: center; */
+  background-attachment: fixed;
 }
 
 nav {
   display:flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
   height: 10vh;
   border-bottom: 1px solid black;
@@ -21,8 +19,6 @@ nav {
 
 .left-nav-bar-section{
   display: flex;
-  /* border: 1px solid black; */
-
 }
 
 .main-nav-wrapper{
@@ -31,7 +27,6 @@ nav {
   align-items: center;
   width: 100%;
   height: 100%;
-  /* border: 1px solid black; */
 }
 
 .hidden{
@@ -40,12 +35,9 @@ nav {
 
 .login-wrapper{
   width: 100%;
-  /* height: 100%; */
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  /* border: 1px solid black; */
-
 }
 
 .fa-solid{
@@ -55,13 +47,8 @@ nav {
 
 .user-icon{
   display: flex;
-  /* border: 1px solid black; */
-
 }
 
- /* .saved-posters {
-  padding: 40px;
-} */
 .user-stats-wrapper{
   display: flex;
   flex-direction: column;
@@ -85,11 +72,9 @@ nav {
 } 
 
 .destination-card {
-  /* border: 1px solid black; */
   background-color: white;
   color: black;
   height: 300px;
-  /* padding: 25px; */
   width: 250px;
   border-radius: 15px;
   flex-shrink: 0;
@@ -104,18 +89,3 @@ nav {
   border-bottom-right-radius: 0;
 }
 
-/* .destination-card h2,
-.destination-card h4,
-.delete {
-  color: white;
-  line-height: 1;
-  width: 90%;
-} */
-
-/* .destination-card h2 {
-  font-size: 30px;
-  font-weight: normal;
-  letter-spacing: 5px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-} */

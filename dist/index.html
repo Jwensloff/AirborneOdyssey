@@ -19,14 +19,9 @@
 
     <div class="main-nav-wrapper dashboard hidden">
       <div class="left-nav-bar-section">
-        <div>
-          <i class="fa-solid fa-house" style="color: #000000;"></i>
-          <label>Home</label>
-        </div>
-        <div>
-          <i class="fa-solid fa-plane" style="color: #000000;"></i>
-          <label>New Booking</label>
-        </div>
+          <button><i class="fa-solid fa-house" style="color: #000000;"></i>
+            Home</button>
+          <button class="new-trip-button"><i class="fa-solid fa-plane" style="color: #000000;"></i>Plan my next trip</button>
       </div>
       <div class="user-icon">
         <i class="fa-solid fa-user" style="color: #000000;"></i>
@@ -41,7 +36,7 @@
       <button class="login-button">Login</button>
     </section>
 
-    <section class="dashboard-view dashboard hidden">
+    <section class="dashboard-page dashboard hidden">
       <div class="user-stats-wrapper">
         <h1>Dashboard</h1>
         <h2 class="display-user-spending">You have spent --- on past bookings</h2>
@@ -56,6 +51,13 @@
       </article>
       <article class="upcoming-trips">
       </article>
+    </section>
+    <section class="display-all-destinations destinations hidden">
+      <div class="destinations-grid-wrapper">
+        <h2>Past trips</h2>
+        <div class="destinations-grid">
+        </div>
+      </div>
     </section>
   </main>
   <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->

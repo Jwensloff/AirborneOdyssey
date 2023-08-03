@@ -32,13 +32,13 @@ export const calculateTotalUserSpending = (findUsersTrips, findUserTripDestinati
       const duration = trip.duration;
       const travelDays = duration * numTravelers;
 
-      let oneWayTicket = 0;
+      let flight;
       findUserTripDestinations.forEach((destination) => {
         if (destination.id === trip.destinationID) {
-          oneWayTicket = destination.estimatedFlightCostPerPerson;
+          flight = destination.estimatedFlightCostPerPerson;
         }
       });
-      let roundTrip = oneWayTicket * 2;
+      // let roundTrip = flight 
 
       let costPerDay = 0;
       findUserTripDestinations.forEach((destination) => {
@@ -48,8 +48,7 @@ export const calculateTotalUserSpending = (findUsersTrips, findUserTripDestinati
       });
 
       const totalLodgingCost = costPerDay * travelDays;
-
-      sum = roundTrip + totalLodgingCost;
+      sum = flight + totalLodgingCost;
     
     return sum;
 

@@ -13,21 +13,16 @@ import { findUsersTrips,
   getCurrentUserInformation, 
   findUserTripDestinations,
   calculateTotalUserSpending,
- } from './functions';
+} from './functions';
 
 import { displayUserName,
   displayUserSpending,
   displayUserTrips,
   showMainPage,
   loginButton, 
- } from './domUpdates';
-
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
-// event listeners 
-loginButton.addEventListener('click', showMainPage)
-
+  newTripButton,
+  showChooseDestinationPage, 
+} from './domUpdates';
 
 // create Data
 let masterData = {
@@ -55,3 +50,14 @@ const generateWebPage = () => {
   displayUserSpending(calculateTotalUserSpending(findUsersTrips(masterData.currentUserId, masterData.trips), findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations)))
   displayUserTrips(findUsersTrips(masterData.currentUserId, masterData.trips),findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations))
 };
+
+// console.log('masterData.destinations', masterData.destinations)
+// event listeners 
+loginButton.addEventListener('click', showMainPage)
+
+
+newTripButton.addEventListener('click', () => {
+  showChooseDestinationPage(masterData.destinations)
+  // console.log('->',masterData.destinations)
+})
+
