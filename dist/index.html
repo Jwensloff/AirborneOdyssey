@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webpack Starter Kit</title>
   <script src="https://kit.fontawesome.com/c0bac25450.js" crossorigin="anonymous"></script>
+  <!-- <script src="../src/scripts.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+
 </head>
 
 <body>
@@ -19,9 +22,10 @@
 
     <div class="main-nav-wrapper dashboard hidden">
       <div class="left-nav-bar-section">
-          <button><i class="fa-solid fa-house" style="color: #000000;"></i>
-            Home</button>
-          <button class="new-trip-button"><i class="fa-solid fa-plane" style="color: #000000;"></i>Plan my next trip</button>
+        <button class="home-button"><i class="fa-solid fa-house" style="color: #000000;"></i>
+          Home</button>
+        <button class="new-trip-button"><i class="fa-solid fa-plane" style="color: #000000;"></i>Plan my next
+          trip</button>
       </div>
       <div class="user-icon">
         <i class="fa-solid fa-user" style="color: #000000;"></i>
@@ -52,15 +56,38 @@
       <article class="upcoming-trips">
       </article>
     </section>
+
     <section class="display-all-destinations destinations hidden">
       <div class="destinations-grid-wrapper">
-        <h2>Past trips</h2>
+        <h2>Where would you like to go?</h2>
         <div class="destinations-grid">
         </div>
       </div>
     </section>
+
+    <section class="user-plan-trip-page hidden">
+      <p>When would you like to start?</p>
+      <label for="start-date-input">Please select start date:</label>
+      <input type="date" name="start-date" id="start-date-input" value="" min="" />
+      <!-- <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // Get the current date in the format "YYYY-MM-DD"
+          const today = dayjs().format("YYYY-MM-DD");
+
+          // Set the value and min attributes of the date input to today's date
+          const startDateInput = document.getElementById("start-date-input");
+          startDateInput.value = today;
+          startDateInput.min = today;
+        });
+      </script> -->
+        <label for="end-date-input">Please select an end date:</label>
+        <input type="date" name="end-date" id="end-date-input" value="" min="" />
+
+        <label class="select-num-people hidden" for="number-input">Enter a number:</label>
+        <input class="select-num-people hidden" type="number" id="number-input" name="number-input" min="0" max="100" step="1" />
+        <button class="book-button hidden">Book</button>
+      </section>
   </main>
-  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
 
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>

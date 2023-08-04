@@ -7,7 +7,7 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
 
-import { createFetchRequests } from './apiCalls';
+import { createFetchRequests, postUserTrip } from './apiCalls';
 
 import { findUsersTrips, 
   getCurrentUserInformation, 
@@ -21,14 +21,27 @@ import { displayUserName,
   showMainPage,
   loginButton, 
   newTripButton,
+  homeButton,
   showChooseDestinationPage, 
+  backToMainPage,
+  pickDestinationGrid,
+  captureDestinationID,
+  displaySelectDateForTrip,
+  startDateInput,
+  endDateInput,
+  setupDateInputs,
+  displaySelectNumPeople,
+  numPeopleInput,
+  displayBookItButton,
+  bookButton,
 } from './domUpdates';
 
 // create Data
-let masterData = {
-  currentUserId: 19,
+export let masterData = {
+  currentUserId: 2,
   today: dayjs().format('YYYY/MM/DD'),
 }
+export let newTripObject;
 
 window.addEventListener('load', () => {
   Promise.all(createFetchRequests()).then((promiseArray) => {
@@ -51,13 +64,55 @@ const generateWebPage = () => {
   displayUserTrips(findUsersTrips(masterData.currentUserId, masterData.trips),findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations))
 };
 
-// console.log('masterData.destinations', masterData.destinations)
 // event listeners 
 loginButton.addEventListener('click', showMainPage)
 
 
 newTripButton.addEventListener('click', () => {
-  showChooseDestinationPage(masterData.destinations)
-  // console.log('->',masterData.destinations)
+  showChooseDestinationPage(masterData.destinations);
 })
 
+homeButton.addEventListener('click', backToMainPage);
+
+pickDestinationGrid.addEventListener('click', (event) => {
+  newTripObject = captureDestinationID(masterData, event);
+  console.log(newTripObject);
+  displaySelectDateForTrip();
+  setupDateInputs();
+  return newTripObject;
+})
+
+startDateInput.addEventListener("change", (event) =>  {
+  const selectedDate = event.target.value;
+  let formattedDate = dayjs(selectedDate);
+  newTripObject.date = formattedDate.format('YYYY/MM/DD'); 
+  return newTripObject;
+});
+
+endDateInput.addEventListener("change", (event) => {
+  const selectedEndDate = event.target.value;
+  let formattedEndDate = dayjs(selectedEndDate);
+  let difference = formattedEndDate.diff(dayjs(newTripObject.date), 'day');
+  newTripObject.duration = parseInt(difference);
+  console.log(newTripObject);
+  displaySelectNumPeople();
+  return newTripObject;
+} );
+
+numPeopleInput.addEventListener("change", (event) => {
+  const numPeople = parseInt(event.target.value);
+  newTripObject.travelers = numPeople;
+  console.log(newTripObject);
+  displayBookItButton();
+});
+
+bookButton.addEventListener('click', () => {
+  postUserTrip()
+  .then(() => {
+    return fetch('http://localhost:3001/api/v1/trips')
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch((error) => console.log(error));
+
+});
