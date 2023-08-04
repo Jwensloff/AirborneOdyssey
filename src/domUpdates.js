@@ -1,18 +1,20 @@
 import dayjs from "dayjs";
- 
+
 // query selectors
 
-// buttons 
+// buttons
 export const loginButton = document.querySelector(".login-button");
 export const newTripButton = document.querySelector(".new-trip-button");
-export const homeButton = document.querySelector('.home-button');
-export const bookButton = document.querySelector('.book-button');
+export const homeButton = document.querySelector(".home-button");
+export const bookButton = document.querySelector(".book-button");
+export const seeAllTripsButton = document.querySelector('.see-all-trips-button');
 
-// user input 
+// user input
 export const startDateInput = document.getElementById("start-date-input");
 export const endDateInput = document.getElementById("end-date-input");
-export const numPeopleInput = document.getElementById('number-input');
-export const displayNumInputField = document.querySelectorAll('.select-num-people');
+export const numPeopleInput = document.getElementById("number-input");
+export const displayNumInputField =
+  document.querySelectorAll(".select-num-people");
 
 // update DOM
 const userName = document.querySelector(".user-name");
@@ -23,9 +25,34 @@ const dashboardItems = document.querySelectorAll(".dashboard");
 const destinationSelectionItems = document.querySelector(".destinations");
 const destinationsGrid = document.querySelector(".destinations-grid");
 const dashBoardPage = document.querySelector(".dashboard-page");
-const showUserTripPlanPage = document.querySelector('.user-plan-trip-page');
-export const pickDestinationGrid = document.querySelector('.destinations-grid');
+const showUserTripPlanPage = document.querySelector(".user-plan-trip-page");
+export const pickDestinationGrid = document.querySelector(".destinations-grid");
+const confirmationPage = document.querySelectorAll('.confirmation-page');
+const planUserTripPage = document.querySelector('.user-plan-trip-page');
+const displayNewTripLocation = document.querySelector('.display-new-trip-location');
+const displayNewTripDuration = document.querySelector('.display-new-trip-duration');
+const displayNewTripTotalCost = document.querySelector('.display-new-trip-total-cost');
+const displayNewTripImg = document.querySelector('.display-new-trip-image');
 
+export const displayConfirmationPage = (newTripObject, newTripCost, allDestinations) => {
+  planUserTripPage.classList.add('hidden')
+  confirmationPage.forEach(item => item.classList.remove('hidden'));
+  displayNewTripLocation.innerText = '';
+
+  const newDestinaton = allDestinations.find(destination => destination.id === newTripObject.destinationID)
+  displayNewTripLocation.innerText = `You're going to ${newDestinaton.destination}!`;
+
+  const tripStartDate = dayjs(newTripObject.date);
+  const tripEndDate = tripStartDate.add(newTripObject.duration, "day");
+  displayNewTripDuration.innerText = '';
+  displayNewTripDuration.innerText = `From ${tripStartDate.format("MM/DD/YYYY")} through ${tripEndDate.format("MM/DD/YYYY")}` 
+  
+  displayNewTripTotalCost.innerText = '';
+  displayNewTripTotalCost.innerText = `Total cost: $ ${newTripCost}`;
+  displayNewTripImg.innerHTML = '';
+  displayNewTripImg.innerHTML = `<img class='pick-destination-card img' 
+   src='${newDestinaton.image}' alt='${newDestinaton.alt}'></img>`
+}
 
 
 export const showMainPage = () => {
@@ -43,22 +70,23 @@ export const displayUserSpending = (calculatedTotalUserSpending) => {
   userSpending.innerText = `You have spent a total of $${calculatedTotalUserSpending} on your travels!`;
 };
 
-export const displayUserTrips = (userTrips, userTripDestinations) => {
+export const displayPastUserTrips = (allUserTrips, userTripDestinations) => {
   userTripGrid.innerHTML = "";
+  console.log('here',allUserTrips.upcomingTrips)
+  allUserTrips.pastTrips.forEach((trip) => {
+    const currentTripDestination = userTripDestinations.find(
+      (destination) => destination.id === trip.destinationID
+    );
 
-  userTrips.forEach(trip => {
-    const currentTripDestination = userTripDestinations
-    .find(destination => destination.id === trip.destinationID)
-  
     const tripStartDate = dayjs(trip.date);
     const tripEndDate = tripStartDate.add(trip.duration, "day");
 
     userTripGrid.innerHTML += `<article class='destination-card' id='${
       currentTripDestination.id
     }'>
-      <img class='currentTripDestination-card img' src='${currentTripDestination.image}' alt='${
-      currentTripDestination.alt
-    }'>
+      <img class='currentTripDestination-card img' src='${
+        currentTripDestination.image
+      }' alt='${currentTripDestination.alt}'>
       <h2>${currentTripDestination.destination}</h2>
       <h2>Date: ${tripStartDate.format("YYYY/MM/DD")} - ${tripEndDate.format(
       "YYYY/MM/DD"
@@ -88,31 +116,29 @@ export const showChooseDestinationPage = (allDestinations) => {
 export const backToMainPage = () => {
   destinationSelectionItems.classList.add("hidden");
   dashboardItems.forEach((item) => item.classList.remove("hidden"));
-  showUserTripPlanPage.classList.add('hidden');
+  showUserTripPlanPage.classList.add("hidden");
+  confirmationPage.forEach(item => item.classList.add('hidden'));
 
-}
+};
 
 export const captureDestinationID = (masterData, event) => {
-   let newTripObject = {
-        userID: parseInt(masterData.currentUser.id), 
-        destinationID: parseInt(event.target.closest('button').id), 
-        status: 'pending', 
-    }
-    return newTripObject
-}
+  let newTripObject = {
+    userID: parseInt(masterData.currentUser.id),
+    destinationID: parseInt(event.target.closest("button").id),
+    status: "pending",
+  };
+  return newTripObject;
+};
 
 export const displaySelectDateForTrip = () => {
   destinationSelectionItems.classList.add("hidden");
-  showUserTripPlanPage.classList.remove('hidden');
-}
+  showUserTripPlanPage.classList.remove("hidden");
+};
 
-export const displayAllowUserToSelectNumDays = () => {
-  
-}
+export const displayAllowUserToSelectNumDays = () => {};
 
 // Function to set up the date inputs
 export function setupDateInputs() {
-
   // Get the current date in the format "YYYY-MM-DD"
   const today = dayjs().format("YYYY-MM-DD");
 
@@ -139,10 +165,11 @@ export function setupDateInputs() {
 }
 
 export const displaySelectNumPeople = () => {
-  displayNumInputField.forEach(item => item.classList.remove('hidden'));
-}
+  displayNumInputField.forEach((item) => item.classList.remove("hidden"));
+};
 
 export const displayBookItButton = () => {
-  bookButton.classList.remove('hidden');
+  bookButton.classList.remove("hidden");
+};
 
-}
+export const displayUpcomingTrips = () => {};

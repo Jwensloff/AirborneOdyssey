@@ -69,17 +69,6 @@
       <p>When would you like to start?</p>
       <label for="start-date-input">Please select start date:</label>
       <input type="date" name="start-date" id="start-date-input" value="" min="" />
-      <!-- <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          // Get the current date in the format "YYYY-MM-DD"
-          const today = dayjs().format("YYYY-MM-DD");
-
-          // Set the value and min attributes of the date input to today's date
-          const startDateInput = document.getElementById("start-date-input");
-          startDateInput.value = today;
-          startDateInput.min = today;
-        });
-      </script> -->
         <label for="end-date-input">Please select an end date:</label>
         <input type="date" name="end-date" id="end-date-input" value="" min="" />
 
@@ -87,6 +76,13 @@
         <input class="select-num-people hidden" type="number" id="number-input" name="number-input" min="0" max="100" step="1" />
         <button class="book-button hidden">Book</button>
       </section>
+      <section class="confirmation-page hidden"></section>
+        <p class="confirmation-page hidden">Pack your bags!</p>
+        <p class="confirmation-page hidden display-new-trip-location">You're going to destination</p>
+        <p class="confirmation-page hidden display-new-trip-duration">From</p>
+        <p class="confirmation-page hidden display-new-trip-total-cost">Total cost:</p>
+        <button class="confirmation-page hidden see-all-trips-button">See all your trips</button>
+        <div class="confirmation-page hidden display-new-trip-image"></div>
   </main>
 
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->

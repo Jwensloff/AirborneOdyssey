@@ -13,11 +13,13 @@ import { findUsersTrips,
   getCurrentUserInformation, 
   findUserTripDestinations,
   calculateTotalUserSpending,
+  filterUserTripsByDate,
+  calculateNewTripCost
 } from './functions';
 
 import { displayUserName,
   displayUserSpending,
-  displayUserTrips,
+  displayPastUserTrips,
   showMainPage,
   loginButton, 
   newTripButton,
@@ -34,13 +36,16 @@ import { displayUserName,
   numPeopleInput,
   displayBookItButton,
   bookButton,
+  displayConfirmationPage,
+  seeAllTripsButton
 } from './domUpdates';
 
 // create Data
 export let masterData = {
   currentUserId: 2,
   today: dayjs().format('YYYY/MM/DD'),
-}
+};
+
 export let newTripObject;
 
 window.addEventListener('load', () => {
@@ -48,24 +53,25 @@ window.addEventListener('load', () => {
     masterData.travelers = promiseArray[0].travelers;
     masterData.trips = promiseArray[1].trips;
     masterData.destinations = promiseArray[2].destinations;
-    console.log('masterData', masterData);
+    // console.log('masterData', masterData);
     generateWebPage();
   });
 });
 
 const generateWebPage = () => {
-  masterData.currentUser = getCurrentUserInformation(masterData.currentUserId, masterData.travelers)
-  console.log(masterData.currentUser)
-  displayUserName(masterData.currentUser)
-  console.log(findUsersTrips(masterData.currentUserId, masterData.trips))
-  console.log(findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations))
-  console.log(calculateTotalUserSpending(findUsersTrips(masterData.currentUserId, masterData.trips), findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations)))
-  displayUserSpending(calculateTotalUserSpending(findUsersTrips(masterData.currentUserId, masterData.trips), findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations)))
-  displayUserTrips(findUsersTrips(masterData.currentUserId, masterData.trips),findUserTripDestinations(findUsersTrips(masterData.currentUserId, masterData.trips), masterData.destinations))
+  masterData.currentUser = getCurrentUserInformation(masterData.currentUserId, masterData.travelers);
+
+  const userTrips = findUsersTrips(masterData.currentUserId, masterData.trips);
+  const userTripsByDate = filterUserTripsByDate(userTrips);
+  const userTripDestinations = findUserTripDestinations(userTrips, masterData.destinations);
+
+  displayUserName(masterData.currentUser);
+  displayUserSpending(calculateTotalUserSpending(userTrips, userTripDestinations));
+  displayPastUserTrips(userTripsByDate, userTripDestinations);
 };
 
 // event listeners 
-loginButton.addEventListener('click', showMainPage)
+loginButton.addEventListener('click', showMainPage);
 
 
 newTripButton.addEventListener('click', () => {
@@ -97,7 +103,14 @@ endDateInput.addEventListener("change", (event) => {
   console.log(newTripObject);
   displaySelectNumPeople();
   return newTripObject;
-} );
+});
+
+numPeopleInput.addEventListener("keyup", (event) => {
+  const numPeople = parseInt(event.target.value);
+  newTripObject.travelers = numPeople;
+  console.log(newTripObject);
+  displayBookItButton();
+});
 
 numPeopleInput.addEventListener("change", (event) => {
   const numPeople = parseInt(event.target.value);
@@ -112,7 +125,17 @@ bookButton.addEventListener('click', () => {
     return fetch('http://localhost:3001/api/v1/trips')
   })
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(data => {
+    console.log('all trips', data);
+    masterData.trips = data.trips;
+    const userTrips = findUsersTrips(masterData.currentUserId, masterData.trips);
+    const userTripsByDate = filterUserTripsByDate(userTrips);
+
+    displayConfirmationPage(newTripObject, calculateNewTripCost(masterData.destinations), masterData.destinations)
+
+  })
   .catch((error) => console.log(error));
 
 });
+
+seeAllTripsButton.addEventListener("click", backToMainPage)

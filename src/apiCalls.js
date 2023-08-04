@@ -20,6 +20,7 @@ export const createFetchRequests = () => {
 export const postUserTrip = () => {
   console.log("from apiCalls file", newTripObject);
   let newID = masterData.trips.length + 1
+  
   let data = {
     id: newID,
     userID: newTripObject.userID,
