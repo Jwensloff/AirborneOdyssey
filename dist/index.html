@@ -44,17 +44,17 @@
       <div class="user-stats-wrapper">
         <h1>Dashboard</h1>
         <h2 class="display-user-spending">You have spent --- on past bookings</h2>
-        <h2>You have spent $0 on traveling this year.</h2>
+        <h2 class="display-upcoming-trip-cost">You have spent $0 on traveling this year.</h2>
       </div>
       <div class="grid-wrapper">
         <h2>Past trips</h2>
-        <div class="user-trip-grid">
+        <div class="past-user-trip-grid">
+        </div>
+        <h2>Upcoming trips</h2>
+        <div class="upcoming-trip-grid">
+          <p class="no-upcoming-trip-message"></p>
         </div>
       </div>
-      <article class="past-trips">
-      </article>
-      <article class="upcoming-trips">
-      </article>
     </section>
 
     <section class="display-all-destinations destinations hidden">
@@ -72,9 +72,10 @@
         <label for="end-date-input">Please select an end date:</label>
         <input type="date" name="end-date" id="end-date-input" value="" min="" />
 
-        <label class="select-num-people hidden" for="number-input">Enter a number:</label>
-        <input class="select-num-people hidden" type="number" id="number-input" name="number-input" min="0" max="100" step="1" />
+        <label class="select-num-people hidden" for="number-input">How many people are going?</label>
+        <input class="select-num-people hidden" type="text" id="number-input" name="number-input" min="0" max="100" step="1" />
         <button class="book-button hidden">Book</button>
+
       </section>
       <section class="confirmation-page hidden"></section>
         <p class="confirmation-page hidden">Pack your bags!</p>

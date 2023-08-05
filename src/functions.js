@@ -47,42 +47,42 @@ export const findUserTripDestinations = (findUserTrips, destinations) => {
   return userDestinations;
 };
 
-export const calculateTotalUserSpending = (
-  findUsersTrips,
-  findUserTripDestinations
-) => {
+export const calculateTotalUserSpending = (findUsersTrips, findUserTripDestinations) => {
+
   const spending = findUsersTrips.reduce((sum, trip) => {
     const numTravelers = trip.travelers;
     const duration = trip.duration;
     const travelDays = duration * numTravelers;
+    // console.log('before sum',sum)
 
-    let flight;
+    let flightCost;
     findUserTripDestinations.forEach((destination) => {
       if (destination.id === trip.destinationID) {
-        flight = destination.estimatedFlightCostPerPerson;
+        flightCost = destination.estimatedFlightCostPerPerson;
       }
     });
-    // let roundTrip = flight
-
-    let costPerDay = 0;
+    // let roundTrip = flightCost
+    
+    let costPerDay;
+    
     findUserTripDestinations.forEach((destination) => {
       if (destination.id === trip.destinationID) {
         costPerDay = destination.estimatedLodgingCostPerDay;
       }
     });
-
     const totalLodgingCost = costPerDay * travelDays;
-    sum = flight + totalLodgingCost;
-
+    
+    sum += flightCost + totalLodgingCost;
     return sum;
   }, 0);
 
-  const totalCostWithTravelAgentFees = spending + spending * 0.1;
+  const totalCostWithTravelAgentFees = spending + (spending * 0.1);
   return totalCostWithTravelAgentFees;
 };
 
 export const calculateNewTripCost = (allDestinations) => {
- 
+ console.log(allDestinations)
+ console.log(newTripObject)
   const newDestinaton = allDestinations.find(destination => destination.id === newTripObject.destinationID)
   const lodgingCostPerDay = newDestinaton.estimatedLodgingCostPerDay * newTripObject.travelers
   const totalCostOfLodging = lodgingCostPerDay * newTripObject.duration
@@ -90,5 +90,7 @@ export const calculateNewTripCost = (allDestinations) => {
   const totalCostOfFlights = newDestinaton.estimatedFlightCostPerPerson * newTripObject.travelers
   
   const newTripCost = totalCostOfFlights + totalCostOfLodging 
-  return newTripCost
+  const travelersAgentFee = (newTripCost + 0.1*newTripCost)
+  const totalNewTripCost = newTripCost + travelersAgentFee
+  return totalNewTripCost
 }

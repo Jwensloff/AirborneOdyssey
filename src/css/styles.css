@@ -63,13 +63,22 @@ nav {
   justify-content: center;
 }
 
-.user-trip-grid {
+.past-user-trip-grid {
   width: 60%;
+  height:auto;
   display: flex;
   overflow-x: scroll;
   grid-gap: 20px;
   padding: 20px;
 } 
+.upcoming-user-trip-grid{
+  width: 60%;
+  height: auto; 
+  display: flex;
+  overflow-x: scroll;
+  grid-gap: 20px;
+  padding: 20px;
+}
 
 .destination-card {
   background-color: white;
