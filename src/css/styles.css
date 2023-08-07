@@ -1,9 +1,9 @@
 body {
-  font-family: 'Josefin Sans', sans-serif;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
   margin: 0px;
   padding: 0px;
-  background-image: url('../images/chris-briggs-V72Hk6LjjjI-unsplash.jpg');
+  background-image: url("../images/chris-briggs-V72Hk6LjjjI-unsplash.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -12,82 +12,66 @@ body {
   overflow: hidden;
 }
 
-/* main.alt-bg {
-  background-color: #e8f8f5;
-} */
-
-main{
-  /* height: 100% !important; */
+main {
   background-color: rgb(255, 255, 255, 0.4);
-  /* margin: 0 !important; */
-  /* padding: 0 !important; */
 }
 
 nav {
   background-color: rgb(255, 255, 255, 0.4);
-  font-family: 'Josefin Sans', sans-serif;
-  font-family: 'Raleway', sans-serif;
-  font-family: 'Work Sans', sans-serif;
-  display:flex;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
+  font-family: "Work Sans", sans-serif;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   height: 12vh;
-  /* border-bottom: 1px solid black; */
   padding-left: 20px;
   padding-right: 30px;
-  /* margin: 0px ; */
-  /* padding-bottom: 0px; */
 }
 
-.main-wrapper{
-/* background-color: rgb(255, 255, 255); */
-/* box-shadow: 0px 0px 9px 10px rgba(193, 208, 227, 0.6); */
-height: 87vh;
-margin: 10px 20px 10px 20px;
-overflow: hidden;
+.main-wrapper {
+  height: 87vh;
+  margin: 10px 20px 10px 20px;
+  overflow: hidden;
 }
 
-.login-input{
+.login-input {
   height: 90%;
 }
 
 .login-page {
-  /* border: 1px solid black; */
   height: 30%;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: left;
 }
 
-.login-page > h1{
+.login-page > h1 {
   font-size: 50px;
   margin-bottom: 0px;
 }
 
-h2{
-  /* font-family: 'Josefin Sans', sans-serif;
-  font-family: 'Raleway', sans-serif; */
-  font-family: 'Work Sans', sans-serif;
+h2 {
+  font-family: "Work Sans", sans-serif;
 }
 
 .login-page > p {
   margin-left: 200px;
   font-size: 20px;
-  /* border: 1px solid black; */
   padding-bottom: 50px;
 }
 
-.password-input{
+.password-input {
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.left-nav-bar-section{
+.left-nav-bar-section {
   display: flex;
   height: 50%;
 }
 
-.main-nav-button{
+.main-nav-button {
   margin-left: 5px;
   margin-right: 5px;
   min-width: 75px;
@@ -95,17 +79,15 @@ h2{
   padding-right: 10px;
 }
 
-.welcome-text-wrapper{
+.welcome-text-wrapper {
   height: 100%;
   width: 100%;
   display: flex;
-  /* align-items: center; */
   padding-top: 20vh;
   justify-content: center;
-  /* border: 1px solid black; */
 }
 
-.main-nav-wrapper{
+.main-nav-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -113,7 +95,7 @@ h2{
   height: 100%;
 }
 
-.login-button{
+.login-button {
   height: 100%;
   width: 100px;
   display: flex;
@@ -121,11 +103,11 @@ h2{
   justify-content: center;
 }
 
-.hidden{
+.hidden {
   display: none !important;
 }
 
-.login-wrapper{
+.login-wrapper {
   width: 100%;
   height: 50%;
   display: flex;
@@ -133,60 +115,52 @@ h2{
   justify-content: flex-end;
 }
 
-.fa-solid{
+.fa-solid {
   margin-right: 5px;
-  /* margin-left: 30px; */
 }
 
-.user-icon{
+.user-icon {
   display: flex;
 }
 
-.user-name{
+.user-name {
   font-weight: 600;
   font-size: 20px;
 }
 
-.user-stats-wrapper{
-  width:65%;
+.user-stats-wrapper {
+  width: 65%;
   height: 8vh;
-  /* background-color: rgb(255, 255, 255, 0.8); */
-  /* box-shadow: 0px 0px 9px 10px rgba(255, 255, 255, 0.8); */
   margin-top: 10px;
   margin-bottom: 40px;
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-between;
-  /* align-items:; */
-  /* border: 1px solid black; */
   padding: 10px 20px 10px 20px;
 }
 
-.stat-text{
+.stat-text {
   font-size: 20px;
 }
 
-.dashboard-page{
-  font-family: 'Josefin Sans', sans-serif;
-  font-family: 'Raleway', sans-serif;
-  font-family: 'Work Sans', sans-serif;
+.dashboard-page {
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
+  font-family: "Work Sans", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0px 20px 0px 20px;
 }
 
-.grid-wrapper{
-  /* background-color: rgb(255, 255, 255, 0.9); */
-  /* box-shadow: 0px 0px 9px 10px rgba(255, 255, 255, 0.9); */
-  display:flex;
-  justify-content:space-between;
+.grid-wrapper {
+  display: flex;
+  justify-content: space-between;
   height: 68vh;
-  width: 90%
+  width: 90%;
 }
 
 .upcoming-trip-grid-wrapper,
-.past-trip-grid-wrapper{
+.past-trip-grid-wrapper {
   height: 90%;
   width: 45%;
   display: flex;
@@ -194,23 +168,20 @@ h2{
   align-items: center;
 }
 
-
 .upcoming-trip-grid,
 .past-user-trip-grid {
   width: 95%;
   height: 55vh;
   display: flex;
   flex-direction: column;
-  /* overflow: hidden; */
   overflow-y: scroll;
   grid-column-gap: 20px;
   padding: 20px;
-} 
-
+}
 
 .pick-destination-card,
 .destination-card {
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   background-color: rgb(255, 255, 255);
   display: flex;
   color: black;
@@ -222,20 +193,18 @@ h2{
 
 .destination-card img {
   height: 100%;
-  width: 25vh ;
+  width: 25vh;
 }
 
-.pick-destination-card{
+.pick-destination-card {
   height: 150px;
   margin-bottom: 5px;
-
 }
 
-.card-text-wrapper{
+.card-text-wrapper {
   display: flex;
   flex-direction: column;
-  margin-left:10px;
-  /* width: 150px; */
+  margin-left: 10px;
 }
 
 .card-text-wrapper > p {
@@ -243,25 +212,25 @@ h2{
   margin-bottom: 5px;
 }
 
-.card-text-wrapper > h2{
+.card-text-wrapper > h2 {
   font-weight: 6000;
   font-size: 20px;
 }
 
-.book-button{
+.book-button {
   height: 40px;
   width: 130px;
   margin-top: 30px;
 }
 
 button,
-input{
-  font-family: 'Work Sans', sans-serif;
+input {
+  font-family: "Work Sans", sans-serif;
   font-size: 15px;
 }
 
-.select-destination-button{
-  width:140px;
+.select-destination-button {
+  width: 140px;
 }
 
 .card-text-wrapper > button {
@@ -271,11 +240,11 @@ input{
 
 .pick-destination-card img {
   height: 100%;
-  width: 25vh ;
+  width: 25vh;
 }
 
-.destinations-grid-wrapper{
-  display:flex;
+.destinations-grid-wrapper {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -283,60 +252,57 @@ input{
 
 .destinations-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 3 columns with equal width */
+  grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   max-height: 80vh;
   overflow-y: scroll;
-} 
-
-.pick-destination-card > p{
-  font-size: 15px;
-} 
-
-button:hover {
-cursor: pointer;
 }
 
-.user-plan-trip-page{
+.pick-destination-card > p {
+  font-size: 15px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.user-plan-trip-page {
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
-  /* border: 1px solid black; */
   height: 100%;
 }
 
-.plan-trip-wrapper{
-  font-family: 'Work Sans', sans-serif;
+.plan-trip-wrapper {
+  font-family: "Work Sans", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 1px solid black; */
   height: 50%;
   width: 50%;
 }
 
 .select-num-people-wrapper,
-.select-date-wrapper{
+.select-date-wrapper {
   display: flex;
   margin-top: 30px;
   margin-bottom: 13px;
 }
 
 .select-num-people-wrapper > label,
-.select-date-wrapper > label{
+.select-date-wrapper > label {
   font-size: 20px;
   font-weight: 300;
 }
 
 .num-traveler-input,
-.date{
+.date {
   margin-right: 30px;
   margin-left: 5px;
 }
 
-.confirmation-page-wrapper{
-  font-family: 'Work Sans', sans-serif;
+.confirmation-page-wrapper {
+  font-family: "Work Sans", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -345,17 +311,17 @@ cursor: pointer;
   margin-bottom: 5px;
 }
 
-.confirmation-page-wrapper > button{
+.confirmation-page-wrapper > button {
   height: 50px;
   width: 150px;
-  /* margin-top: 20px; */
-  /* margin-bottom: 20px; */
 }
-.confirmation-page-image{
-  height:400px;
+
+.confirmation-page-image {
+  height: 400px;
   width: 800px;
 }
-.confirmation-page-text{
+
+.confirmation-page-text {
   margin-top: 5px;
   margin-bottom: 5px;
 }
