@@ -30,7 +30,6 @@ export const filterUserTripsByDate = (userTrips) => {
   });
   // console.log('allUserTrips from functions file',allUserTrips)
   return allUserTrips;
-
 };
 
 export const findUserTripDestinations = (findUserTrips, destinations) => {
@@ -94,3 +93,7 @@ export const calculateNewTripCost = (allDestinations) => {
   const totalNewTripCost = newTripCost + travelersAgentFee
   return totalNewTripCost
 }
+
+
+
+// calculate the user spendinf from the allTrips.upcoming trips 

@@ -40,7 +40,7 @@ import {
   bookButton,
   displayConfirmationPage,
   seeAllTripsButton,
-  updateDisplayNewTripCost,
+  displayUserSpendingForThisYear
 } from "./domUpdates";
 
 // create Data
@@ -82,11 +82,15 @@ const generateWebPage = () => {
   displayUserSpending(
     calculateTotalUserSpending(userTrips, userTripDestinations)
   );
+  displayUserSpendingForThisYear(userTripsByDate, userTripDestinations)
   renderMainPage(userTripsByDate, userTripDestinations);
 };
 
 // event listeners
-loginButton.addEventListener("click", showMainPage);
+loginButton.addEventListener("click", () => {
+  
+  showMainPage()
+});
 
 newTripButton.addEventListener("click", () => {
   showChooseDestinationPage(masterData.destinations);
@@ -123,10 +127,11 @@ endDateInput.addEventListener("change", (event) => {
   return newTripObject;
 });
 
-numPeopleInput.addEventListener("keyup", (event) => {
+numPeopleInput.addEventListener("change", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
   console.log(newTripObject);
+  // console.log('HELLO', event)
   displayBookItButton();
 });
 
@@ -134,6 +139,7 @@ numPeopleInput.addEventListener("keyup", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
   console.log(newTripObject);
+  // console.log('HELLO1')
   displayBookItButton();
 });
 

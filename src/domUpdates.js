@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { calculateTotalUserSpending } from "./functions";
 
 // query selectors
 
@@ -14,22 +15,26 @@ export const seeAllTripsButton = document.querySelector(
 // user input
 export const startDateInput = document.getElementById("start-date-input");
 export const endDateInput = document.getElementById("end-date-input");
-export const numPeopleInput = document.getElementById("number-input");
+export const numPeopleInput = document.querySelector(".num-traveler-input");
 export const displayNumInputField =
   document.querySelectorAll(".select-num-people");
 
 // update DOM
+
+const mainNav = document.querySelector(".main-nav-wrapper");
 const userName = document.querySelector(".user-name");
 const userSpending = document.querySelector(".display-user-spending");
 const pastUserTripGrid = document.querySelector(".past-user-trip-grid");
 const upcomingUserTripGrid = document.querySelector(".upcoming-trip-grid");
 
-const displayNewTripCost = document.querySelector('.display-upcoming-trip-cost');
+const displayNewTripCost = document.querySelector(
+  ".display-upcoming-trip-cost"
+);
 const loginItems = document.querySelectorAll(".login");
 const dashboardItems = document.querySelectorAll(".dashboard");
 const destinationSelectionItems = document.querySelector(".destinations");
 const destinationsGrid = document.querySelector(".destinations-grid");
-const dashBoardPage = document.querySelector(".dashboard-page");
+const dashBoardPage = document.querySelectorAll(".dashboard");
 const showUserTripPlanPage = document.querySelector(".user-plan-trip-page");
 export const pickDestinationGrid = document.querySelector(".destinations-grid");
 const confirmationPage = document.querySelectorAll(".confirmation-page");
@@ -80,11 +85,12 @@ export const displayConfirmationPage = (
 export const showMainPage = () => {
   loginItems.forEach((item) => item.classList.add("hidden"));
   dashboardItems.forEach((item) => item.classList.remove("hidden"));
+  mainNav.classList.remove("hidden");
 };
 
 export const displayUserName = (currentUser) => {
   userName.innerText = "";
-  userName.innerText = currentUser.name;
+  userName.innerText = ` Welcome back ${currentUser.name}!`;
 };
 
 export const displayUserSpending = (calculatedTotalUserSpending) => {
@@ -95,7 +101,7 @@ export const displayUserSpending = (calculatedTotalUserSpending) => {
 export const renderMainPage = (allUserTrips, userTripDestinations) => {
   pastUserTripGrid.innerHTML = "";
 
-  console.log('from Dom updates',allUserTrips.pastTrips)
+  console.log("from Dom updates", allUserTrips.pastTrips);
 
   allUserTrips.pastTrips.forEach((trip) => {
     const currentTripDestination = userTripDestinations.find(
@@ -111,11 +117,13 @@ export const renderMainPage = (allUserTrips, userTripDestinations) => {
       <img class='currentTripDestination-card img' src='${
         currentTripDestination.image
       }' alt='${currentTripDestination.alt}'>
-      <p>${currentTripDestination.destination}</p>
+      <div class="card-text-wrapper">
+      <h2>${currentTripDestination.destination}</h2>
+      <p>Status: Past</p>
       <p>Date: ${tripStartDate.format("YYYY/MM/DD")} - ${tripEndDate.format(
       "YYYY/MM/DD"
-    )}</p> <p>Status: Past</p>
-    `;
+    )}</p>  </article>
+    </div>`;
   });
   // console.log(allUserTrips.upcomingTrips.length)
   if (allUserTrips.upcomingTrips.length < 1) {
@@ -128,20 +136,23 @@ export const renderMainPage = (allUserTrips, userTripDestinations) => {
 };
 
 export const showChooseDestinationPage = (allDestinations) => {
-  dashBoardPage.classList.add("hidden");
+  destinationsGrid.innerHTML  = '';
+  dashBoardPage.forEach((item) => item.classList.add("hidden"));
+  destinationSelectionItems.classList.remove("hidden");
+  let sortedDestinations = allDestinations.sort((a, b) => a.destination.localeCompare(b.destination));
 
-  allDestinations.forEach((destination) => {
+  sortedDestinations.forEach((destination) => {
     if (destination.id !== 45) {
       // console.log(destination.id)
       destinationsGrid.innerHTML += `<article class='pick-destination-card' id='${destination.id}'>
   <img class='pick-destination-card img' src='${destination.image}' alt='${destination.alt}'>
+  <div class="card-text-wrapper">
   <h2>${destination.destination}</h2>
-  <h3> Daily lodging: $ ${destination.estimatedLodgingCostPerDay}/person</h2>
-  <h3>Round trip Flight $ ${destination.estimatedFlightCostPerPerson}/person</h2>
-  <button id='${destination.id}'>Take me here</button>`;
+  <p> Lodging: $${destination.estimatedLodgingCostPerDay} per person</p>
+  <p>Flight: $${destination.estimatedFlightCostPerPerson} per person</p>
+  <button id='${destination.id}'>Select Location</button></article></div>`;
     }
   });
-  destinationSelectionItems.classList.remove("hidden");
 };
 
 export const backToMainPage = () => {
@@ -224,20 +235,19 @@ export const displayUpcomingTrips = (allUserTrips, userTripDestinations) => {
       <h2>${currentTripDestination.destination}</h2>
       <h2>Date: ${tripStartDate.format("YYYY/MM/DD")} - ${tripEndDate.format(
       "YYYY/MM/DD"
-    )}</h2>`;
+    )}</h2> </article>`;
   });
-
-  // return userTripDestinations;
 };
 
 const renderUpcomingTripsGrid = (allUserTrips, userTripDestinations) => {
-    upcomingUserTripGrid.innerHTML = "";
-  console.log(allUserTrips)
+  upcomingUserTripGrid.innerHTML = "";
+  // console.log(allUserTrips)
+
   allUserTrips.upcomingTrips.forEach((trip) => {
     const upcomingTripDestination = userTripDestinations.find(
       (destination) => destination.id === trip.destinationID
     );
-      console.log(allUserTrips.upcomingTrips)
+    console.log(allUserTrips.upcomingTrips);
     const tripStartDate = dayjs(trip.date);
     const tripEndDate = tripStartDate.add(trip.duration, "day");
 
@@ -247,16 +257,29 @@ const renderUpcomingTripsGrid = (allUserTrips, userTripDestinations) => {
     <img class='upcomingTripDestination-card img' src='${
       upcomingTripDestination.image
     }' alt='${upcomingTripDestination.alt}'>
-    <p>${upcomingTripDestination.destination}</p>
+    <div class="card-text-wrapper">
+    <h2>${upcomingTripDestination.destination}</h2>
+    <p>Status: Pending</p>
     <p>Date: ${tripStartDate.format("YYYY/MM/DD")} - ${tripEndDate.format(
       "YYYY/MM/DD"
-    )}</p>  <p>Status: Pending</p>
-    `;
+    )}</p>  <div/>
+    </article>`;
   });
 };
 
+export const displayUserSpendingForThisYear = (
+  allUserTrips,
+  findUserTripDestinations
+) => {
+  displayNewTripCost.innerText = "";
 
-export const updateDisplayNewTripCost = calculateNewTripCost => {
-  displayNewTripCost.innerText = '';
-  displayNewTripCost.innerText = `You have spent $ ${calculateNewTripCost} on trips this year`;
-}
+  if (allUserTrips.upcomingTrips.length === 0) {
+    displayNewTripCost.innerText = `You have spent $0 on trips this year`;
+  } else {
+    const spendingOnTripsThisYear = calculateTotalUserSpending(
+      allUserTrips.upcomingTrips,
+      findUserTripDestinations
+    );
+    displayNewTripCost.innerText = `You have spent $${spendingOnTripsThisYear} on trips this year`;
+  }
+};

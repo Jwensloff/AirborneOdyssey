@@ -9,6 +9,17 @@
   <script src="https://kit.fontawesome.com/c0bac25450.js" crossorigin="anonymous"></script>
   <!-- <script src="../src/scripts.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Raleway:wght@600&display=swap"
+    rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Raleway:wght@600&family=Work+Sans:wght@200;300;600&display=swap"
+    rel="stylesheet">
+
 
 </head>
 
@@ -16,74 +27,99 @@
   <nav>
 
     <div class="login-wrapper login">
-      <p class="login"><i class="fa-solid fa-user login" style="color: #000000;"></i>Login</p>
+      <input class="username-input login-input login" type="text" id="number-input" placeholder="Username" />
+
+      <input class="password-input login-input login" type="text" id="number-input" placeholder="Password" />
+
+      <button class="login-button login">
+        <i class="fa-solid fa-user login" style="color: #000000;"></i>Login</button>
     </div>
 
 
-    <div class="main-nav-wrapper dashboard hidden">
+    <div class="main-nav-wrapper hidden">
       <div class="left-nav-bar-section">
-        <button class="home-button"><i class="fa-solid fa-house" style="color: #000000;"></i>
+        <button class="home-button main-nav-button"><i class="fa-solid fa-house" style="color: #000000;"></i>
           Home</button>
-        <button class="new-trip-button"><i class="fa-solid fa-plane" style="color: #000000;"></i>Plan my next
+        <button class="new-trip-button main-nav-button"><i class="fa-solid fa-plane" style="color: #000000;"></i>Plan
+          your next
           trip</button>
       </div>
       <div class="user-icon">
-        <i class="fa-solid fa-user" style="color: #000000;"></i>
+        <!-- <i class="fa-solid fa-user" style="color: #000000;"></i> -->
         <label class="user-name">User Name</label>
       </div>
     </div>
 
   </nav>
-  <main>
-    <section class="login-page login">
-      <h1>Welcome</h1>
-      <button class="login-button">Login</button>
-    </section>
 
-    <section class="dashboard-page dashboard hidden">
-      <div class="user-stats-wrapper">
-        <h1>Dashboard</h1>
-        <h2 class="display-user-spending">You have spent --- on past bookings</h2>
-        <h2 class="display-upcoming-trip-cost">You have spent $0 on traveling this year.</h2>
-      </div>
-      <div class="grid-wrapper">
-        <h2>Past trips</h2>
-        <div class="past-user-trip-grid">
-        </div>
-        <h2>Upcoming trips</h2>
-        <div class="upcoming-trip-grid">
-          <p class="no-upcoming-trip-message"></p>
+
+
+  <main class="main">
+    <div class="main-wrapper">
+      <div class="welcome-text-wrapper login">
+        <div class="login-page login">
+          <h1>Airborne Odyssey</h1>
+          <p>Your travels start here</p>
         </div>
       </div>
-    </section>
 
-    <section class="display-all-destinations destinations hidden">
-      <div class="destinations-grid-wrapper">
-        <h2>Where would you like to go?</h2>
-        <div class="destinations-grid">
+      <section class="dashboard-page dashboard hidden">
+        <div class="user-stats-wrapper dashboard">
+          <h2 class="dashboard">Your travels summarized:</h2>
+          <div class="dashboard">
+            <p class="display-user-spending dashboard">You have spent --- on past bookings</p>
+            <p class="display-upcoming-trip-cost dashboard">You have spent $0 on traveling this year.</p>
+          </div>
         </div>
-      </div>
-    </section>
+        <div class="grid-wrapper dashboard">
+          <div class="upcoming-trip-grid-wrapper dashboard">
+            <h2 class="dashboard">Upcoming trips</h2>
+            <div class="upcoming-trip-grid dashboard">
+              <p class="no-upcoming-trip-message dashboard"></p>
+            </div>
+          </div class="dashboard">
+          <div class="past-trip-grid-wrapper dashboard">
+            <h2 class="dashboard">Past trips</h2>
+            <div class="past-user-trip-grid dashboard">
+            </div>
+          </div>
 
-    <section class="user-plan-trip-page hidden">
-      <p>When would you like to start?</p>
-      <label for="start-date-input">Please select start date:</label>
-      <input type="date" name="start-date" id="start-date-input" value="" min="" />
-        <label for="end-date-input">Please select an end date:</label>
-        <input type="date" name="end-date" id="end-date-input" value="" min="" />
+        </div>
+      </section>
+      <section class="display-all-destinations destinations hidden">
+        <div class="destinations-grid-wrapper">
+          <h2>Where would you like to go?</h2>
+          <div class="destinations-grid">
+          </div>
+        </div>
+      </section>
 
-        <label class="select-num-people hidden" for="number-input">How many people are going?</label>
-        <input class="select-num-people hidden" type="text" id="number-input" name="number-input" min="0" max="100" step="1" />
-        <button class="book-button hidden">Book</button>
-
+      <section class="user-plan-trip-page hidden">
+        <div class="plan-trip-wrapper">
+          <h2>When would you like to start?</h2>
+          <div class="select-date-wrapper">
+            <label for="start-date-input">Start date:</label>
+            <input class="date" type="date" name="start-date" id="start-date-input" value="" min="" />
+            <label for="end-date-input">End date:</label>
+            <input class="date" type="date" name="end-date" id="end-date-input" value="" min="" />
+          </div>
+          <!-- <label class="select-num-people hidden" for="number-input">How many people are going?</label>
+        <input class="select-num-people hidden" type="text" id="number-input"/> -->
+          <div class="select-num-people-wrapper">
+            <label class="select-num-people hidden">How many people are going?</label>
+            <input class="select-num-people hidden num-traveler-input" type="number" min="0" max="100" step="1">
+          </div>
+          <button class="book-button hidden">Book this trip!</button>
+        </div>
       </section>
       <section class="confirmation-page hidden"></section>
-        <p class="confirmation-page hidden">Pack your bags!</p>
-        <p class="confirmation-page hidden display-new-trip-location">You're going to destination</p>
-        <p class="confirmation-page hidden display-new-trip-duration">From</p>
-        <p class="confirmation-page hidden display-new-trip-total-cost">Total cost:</p>
-        <button class="confirmation-page hidden see-all-trips-button">See all your trips</button>
-        <div class="confirmation-page hidden display-new-trip-image"></div>
+      <p class="confirmation-page hidden">Pack your bags!</p>
+      <p class="confirmation-page hidden display-new-trip-location">You're going to destination</p>
+      <p class="confirmation-page hidden display-new-trip-duration">From</p>
+      <p class="confirmation-page hidden display-new-trip-total-cost">Total cost:</p>
+      <button class="confirmation-page hidden see-all-trips-button">See all your trips</button>
+      <div class="confirmation-page hidden display-new-trip-image"></div>
+    </div>
   </main>
 
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->

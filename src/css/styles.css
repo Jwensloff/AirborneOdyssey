@@ -1,13 +1,23 @@
 body {
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url('../images/aaron-burden--3Dc-I-65ug-unsplash.jpg');
+  background-image: url('../images/chris-briggs-V72Hk6LjjjI-unsplash.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
+main.alt-bg {
+  background-color: #e8f8f5;
+}
+
 nav {
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -17,8 +27,69 @@ nav {
   padding-right: 30px;
 }
 
+.main-wrapper{
+/* background-color: rgb(255, 255, 255, 0.6); */
+/* box-shadow: 0px 0px 9px 10px rgba(255, 255, 255, 0.6); */
+height: 87vh;
+margin: 10px 20px 10px 20px;
+overflow: hidden;
+}
+
+.login-input{
+  height: 100%;
+}
+
+.login-page {
+  /* border: 1px solid black; */
+  height: 30%;
+  display: flex;
+  flex-direction:column;
+  align-items: left;
+}
+
+.login-page > h1{
+  font-size: 50px;
+  margin-bottom: 0px;
+}
+
+h2{
+  /* font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Raleway', sans-serif; */
+  font-family: 'Work Sans', sans-serif;
+}
+
+.login-page > p {
+  margin-left: 200px;
+  font-size: 20px;
+  /* border: 1px solid black; */
+  padding-bottom: 50px;
+}
+
+.password-input{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .left-nav-bar-section{
   display: flex;
+  height: 60%;
+}
+.main-nav-button{
+  margin-left: 5px;
+  margin-right: 5px;
+  min-width: 75px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.welcome-text-wrapper{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  /* align-items: center; */
+  padding-top: 20vh;
+  justify-content: center;
+  /* border: 1px solid black; */
 }
 
 .main-nav-wrapper{
@@ -29,12 +100,21 @@ nav {
   height: 100%;
 }
 
+.login-button{
+  height: 110%;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hidden{
-  display: none;
+  display: none !important;
 }
 
 .login-wrapper{
   width: 100%;
+  height: 50%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -42,78 +122,134 @@ nav {
 
 .fa-solid{
   margin-right: 5px;
-  margin-left: 30px;
+  /* margin-left: 30px; */
 }
 
 .user-icon{
   display: flex;
 }
 
+.user-name{
+  font-weight: 600;
+  font-size: 20px;
+}
+
 .user-stats-wrapper{
+  width:65%;
+  height: 8vh;
+  background-color: rgb(255, 255, 255, 0.8);
+  box-shadow: 0px 0px 9px 10px rgba(255, 255, 255, 0.8);
+  margin-top: 10px;
+  margin-bottom: 40px;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  /* align-items:; */
+  border: 1px solid black;
+  padding: 10px 20px 10px 20px;
+}
+
+.dashboard-page{
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin: 0px 20px 0px 20px;
 }
 
 .grid-wrapper{
+  /* backgrou-color: rgb(255, 255, 255, 0.9); */
+  box-shadow: 0px 0px 9px 10px rgba(255, 255, 255, 0.9);
   display:flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content:space-between;
+  height: 68vh;
+  width: 100%
 }
 
-.past-user-trip-grid {
-  width: 60%;
-  height:auto;
+.upcoming-trip-grid-wrapper,
+.past-trip-grid-wrapper{
+  height: 90%;
+  width: 45%;
   display: flex;
-  overflow-x: scroll;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.upcoming-user-trip-grid,
+.past-user-trip-grid {
+  width: 90%;
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
   grid-gap: 20px;
   padding: 20px;
 } 
-.upcoming-user-trip-grid{
-  width: 60%;
-  height: auto; 
-  display: flex;
-  overflow-x: scroll;
-  grid-gap: 20px;
-  padding: 20px;
-}
 
+
+.pick-destination-card,
 .destination-card {
-  background-color: white;
+  font-family: 'Work Sans', sans-serif;
+  background-color: rgb(255, 255, 255);
+  display: flex;
   color: black;
-  height: 300px;
-  width: 250px;
-  border-radius: 15px;
+  height: 120px;
+  width: 500px;
   flex-shrink: 0;
 }
 
 .destination-card img {
-  height: 40%;
-  width: 100%;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  height: 100%;
+  width: 25vh ;
 }
+
+.card-text-wrapper{
+  display: flex;
+  flex-direction: column;
+  margin-left:10px;
+  /* width: 150px; */
+}
+
+.card-text-wrapper > p {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.card-text-wrapper > h2{
+  font-weight: 6000;
+  font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .pick-destination-card{
-  background-color: white;
-  color: black;
-  height: 300px;
-  width: 250px;
-  border-radius: 15px;
-  flex-shrink: 0;
+  height: 140px;
 }
 
+
+.card-text-wrapper > button {
+width: 150px;
+}
 .pick-destination-card img {
-  height: 40%;
-  width: 100%;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  height: 100%;
+  width: 25vh ;
 }
 
 .destinations-grid-wrapper{
@@ -125,14 +261,13 @@ nav {
 
 .destinations-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 3 columns with equal width */
-  gap: 10px;
+  grid-template-columns: repeat(2, 1fr); /* 3 columns with equal width */
+  gap: 15px;
   max-height: 80vh;
   overflow-y: scroll;
-  
 } 
 
-.pick-destination-card > h3{
+.pick-destination-card > p{
   font-size: 15px;
 } 
 
@@ -140,7 +275,40 @@ button:hover {
 cursor: pointer;
 }
 
-.pick-destination-card:hover {
-  /* cursor: pointer;
-  border: 1px solid gray; */
-} 
+.user-plan-trip-page{
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid black; */
+  height: 100%;
+}
+
+.plan-trip-wrapper{
+  font-family: 'Work Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  height: 50%;
+  width: 50%;
+}
+
+.select-num-people-wrapper,
+.select-date-wrapper{
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 13px;
+}
+
+.select-num-people-wrapper > label,
+.select-date-wrapper > label{
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.num-traveler-input,
+.date{
+  margin-right: 30px;
+  margin-left: 5px;
+}
