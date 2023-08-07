@@ -41,7 +41,9 @@ import {
   displayConfirmationPage,
   seeAllTripsButton,
   displayUserSpendingForThisYear,
-  main
+  main,
+  checkUserNamePassword,
+  checkUserTripInput,
 } from "./domUpdates";
 
 // create Data
@@ -57,20 +59,16 @@ window.addEventListener("load", () => {
     masterData.travelers = promiseArray[0].travelers;
     masterData.trips = promiseArray[1].trips;
     masterData.destinations = promiseArray[2].destinations;
-    // console.log('masterData', masterData);
     generateWebPage();
   });
 });
-
-// let updateMainPageData = () => {
-//   updateDisplayNewTripCost(calculateNewTripCost(masterData.destinations));
-// };
 
 const generateWebPage = () => {
   masterData.currentUser = getCurrentUserInformation(
     masterData.currentUserId,
     masterData.travelers
   );
+  console.log("masterData", masterData.currentUser);
 
   const userTrips = findUsersTrips(masterData.currentUserId, masterData.trips);
   const userTripsByDate = filterUserTripsByDate(userTrips);
@@ -89,9 +87,14 @@ const generateWebPage = () => {
 
 // event listeners
 loginButton.addEventListener("click", () => {
+  let checkLogin =  checkUserNamePassword(masterData.currentUser);
+  if (checkLogin === false) {
+  return;
+  } else {
   showMainPage();
-  main.style.backgroundColor = 'rgb(224, 218, 209)'
-  main.style.boxShadow = '0px 0px 9px 10px rgba(224, 218, 209)'
+  main.style.backgroundColor = "rgb(224, 218, 209)";
+  main.style.boxShadow = "0px 0px 9px 10px rgba(224, 218, 209)";
+  }
 });
 
 newTripButton.addEventListener("click", () => {
@@ -133,14 +136,22 @@ numPeopleInput.addEventListener("change", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
   console.log(newTripObject);
-  displayBookItButton();
+  if (checkUserTripInput() === false) {
+    return;
+  } else {
+    displayBookItButton();
+  }
 });
 
 numPeopleInput.addEventListener("keyup", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
   console.log(newTripObject);
-  displayBookItButton();
+  if (checkUserTripInput() === false) {
+    return;
+  } else {
+    displayBookItButton();
+  }
 });
 
 bookButton.addEventListener("click", () => {
@@ -148,7 +159,12 @@ bookButton.addEventListener("click", () => {
     .then(() => {
       return fetch("http://localhost:3001/api/v1/trips");
     })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network resposne was not ok.");
+      }
+      return response.json();
+    })
     .then((data) => {
       // console.log("all trips", data);
       masterData.trips = data.trips;
@@ -163,18 +179,14 @@ bookButton.addEventListener("click", () => {
         masterData.destinations
       );
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log('Error', error));
 
-    displaySelectNumPeople();
-    bookButton.classList.add('hidden')
+  displaySelectNumPeople();
+  bookButton.classList.add("hidden");
 });
 
 seeAllTripsButton.addEventListener("click", () => {
   backToMainPage();
   generateWebPage();
   numPeopleInput.value = "";
-  // bookButton.classList.add('hidden')
-  // select-num-people
-  // const allDestinations = masterData.destinations
-  // updateDisplayNewTripCost(calculateNewTripCost(masterData.destinations, newTripObject));
 });

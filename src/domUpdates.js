@@ -4,7 +4,7 @@ import { calculateTotalUserSpending } from "./functions";
 // query selectors
 
 // main
-export const main = document.querySelector('main');
+export const main = document.querySelector("main");
 
 // buttons
 export const loginButton = document.querySelector(".login-button");
@@ -16,6 +16,11 @@ export const seeAllTripsButton = document.querySelector(
 );
 
 // user input
+export const inputError = document.querySelector(".input-error");
+const passwordElement = document.querySelector(".password-input");
+const userNameElement = document.querySelector(".username-input");
+
+export const errorMessage = document.querySelector(".error-message");
 export const startDateInput = document.getElementById("start-date-input");
 export const endDateInput = document.getElementById("end-date-input");
 export const numPeopleInput = document.querySelector(".num-traveler-input");
@@ -70,9 +75,11 @@ export const displayConfirmationPage = (
 
   const tripStartDate = dayjs(newTripObject.date);
   const tripEndDate = tripStartDate.add(newTripObject.duration, "day");
-  displayNewTripLocation.innerText = `You're going to ${newDestinaton.destination} from ${tripStartDate.format(
+  displayNewTripLocation.innerText = `You're going to ${
+    newDestinaton.destination
+  } from ${tripStartDate.format("MM/DD/YYYY")} through ${tripEndDate.format(
     "MM/DD/YYYY"
-  )} through ${tripEndDate.format("MM/DD/YYYY")}.`;
+  )}.`;
 
   // displayNewTripDuration.innerText = "";
   // displayNewTripDuration.innerText = `from ${tripStartDate.format(
@@ -141,10 +148,12 @@ export const renderMainPage = (allUserTrips, userTripDestinations) => {
 };
 
 export const showChooseDestinationPage = (allDestinations) => {
-  pickDestinationGrid.innerHTML  = '';
+  pickDestinationGrid.innerHTML = "";
   dashBoardPage.forEach((item) => item.classList.add("hidden"));
   destinationSelectionItems.classList.remove("hidden");
-  let sortedDestinations = allDestinations.sort((a, b) => a.destination.localeCompare(b.destination));
+  let sortedDestinations = allDestinations.sort((a, b) =>
+    a.destination.localeCompare(b.destination)
+  );
 
   sortedDestinations.forEach((destination) => {
     if (destination.id !== 45) {
@@ -252,7 +261,7 @@ const renderUpcomingTripsGrid = (allUserTrips, userTripDestinations) => {
     const upcomingTripDestination = userTripDestinations.find(
       (destination) => destination.id === trip.destinationID
     );
-    console.log(allUserTrips.upcomingTrips);
+    // console.log(allUserTrips.upcomingTrips);
     const tripStartDate = dayjs(trip.date);
     const tripEndDate = tripStartDate.add(trip.duration, "day");
 
@@ -288,3 +297,64 @@ export const displayUserSpendingForThisYear = (
     displayNewTripCost.innerText = `You have spent $${spendingOnTripsThisYear} on trips this year`;
   }
 };
+
+export const checkUserNamePassword = (currentUser) => {
+  let username = userNameElement.value;
+  let password = passwordElement.value;
+  console.log("username", `traveler${currentUser.id}`);
+  console.log("password", password);
+  if (username === "" && password == "") {
+    errorMessage.innerText = "";
+    errorMessage.innerText = "Please login to continue";
+    return false;
+  }
+  if (username === "") {
+    errorMessage.innerText = "";
+    errorMessage.innerText = "Please enter your username";
+    return false;
+  }
+  if (password === "") {
+    errorMessage.innerText = "";
+    errorMessage.innerText = "Please enter your password";
+    return false;
+  }
+  if (username !== `traveler${currentUser.id}`) {
+    errorMessage.innerText = "";
+    errorMessage.innerText =
+      "The username you entered is incorrect, please try again";
+    return false;
+  }
+  if (password !== `travel`) {
+    errorMessage.innerText = "";
+    errorMessage.innerText =
+      "The password you entered is incorrect, please try again";
+    return false;
+  }
+};
+
+export const checkUserTripInput = () => {
+  const startDate = startDateInput.value;
+  const endDate = endDateInput.value;
+  const numTravelers = Number(numPeopleInput.value);
+
+  if (!startDate || !endDate) {
+    inputError.innerText = "";
+    inputError.innerText = "Please enter a valid date to continue";
+    bookButton.classList.add('hidden');
+
+    return false;
+  }
+  if (!numTravelers || numTravelers === 0) {
+    inputError.innerText = "";
+    inputError.innerText =
+      "Please specify the number of travelers there will be to continue";
+      bookButton.classList.add('hidden');
+
+    return false;
+  }
+  inputError.innerText = "";
+};
+
+
+
+

@@ -52,7 +52,7 @@ export const calculateTotalUserSpending = (findUsersTrips, findUserTripDestinati
     const numTravelers = trip.travelers;
     const duration = trip.duration;
     const travelDays = duration * numTravelers;
-    // console.log('before sum',sum)
+    // console.log('numTravelers',numTravelers)
 
     let flightCost;
     findUserTripDestinations.forEach((destination) => {
@@ -80,7 +80,6 @@ export const calculateTotalUserSpending = (findUsersTrips, findUserTripDestinati
 };
 
 export const calculateNewTripCost = (allDestinations) => {
-//  console.log(allDestinations)
  console.log(newTripObject)
   const newDestinaton = allDestinations.find(destination => destination.id === newTripObject.destinationID)
   console.log('new destination',newDestinaton)
@@ -97,5 +96,3 @@ export const calculateNewTripCost = (allDestinations) => {
 }
 
 
-
-// calculate the user spendinf from the allTrips.upcoming trips 
