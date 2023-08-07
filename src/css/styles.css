@@ -42,8 +42,11 @@ nav {
 .login-page {
   height: 30%;
   display: flex;
+  padding-top: 18vh;
   flex-direction: column;
+  align-items: center;
   align-items: left;
+  width:100%;
 }
 
 .login-page > h1 {
@@ -83,8 +86,10 @@ h2 {
   height: 100%;
   width: 100%;
   display: flex;
-  padding-top: 20vh;
-  justify-content: center;
+  flex-direction: column;
+  /* padding-top: 20vh; */
+  /* justify-content: center; */
+  /* align-items: flex-end; */
 }
 
 .main-nav-wrapper {
@@ -324,4 +329,9 @@ button:hover {
 .confirmation-page-text {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.error-message{
+  margin-right: 10px;
+  font-weight: 600;
 }

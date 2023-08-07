@@ -16,6 +16,7 @@ export const seeAllTripsButton = document.querySelector(
 );
 
 // user input
+export const errorMessage = document.querySelector('.error-message');
 export const startDateInput = document.getElementById("start-date-input");
 export const endDateInput = document.getElementById("end-date-input");
 export const numPeopleInput = document.querySelector(".num-traveler-input");
@@ -290,11 +291,37 @@ export const displayUserSpendingForThisYear = (
   }
 };
 
+let passwordElement = document.querySelector('.password-input');
+let userNameElement = document.querySelector('.username-input');
 
-export const generateLoginErrorMessage = (currentUser) => {
-  let userName = document.querySelector('.username-input');
-
-  let password = document.querySelector('.password-input');
-  
-  if(userName !== currentUser.id){}
+export const checkUserNamePassword  = (currentUser) => {
+  let username = userNameElement.value;
+  let password = passwordElement.value;
+  console.log('username',`traveler${currentUser.id}`)
+  console.log('password',password)
+ if(username === '' && password == ''){
+    errorMessage.innerText = '';
+    errorMessage.innerText = 'Please login to continue';
+    return false;
+  }if(username === ''){
+   errorMessage.innerText = '';
+   errorMessage.innerText = 'Please enter your username';
+   return false;
+  } if(password === ''){
+   errorMessage.innerText = '';
+   errorMessage.innerText = 'Please enter your password';
+   return false;
+ }if(username !== `traveler${currentUser.id}`){
+    errorMessage.innerText = '';
+    errorMessage.innerText = 'The username you entered is incorrect, please try again';
+    return false;
+  } if(password !== `travel`){
+    errorMessage.innerText = '';
+    errorMessage.innerText = 'The password you entered is incorrect, please try again';
+    return false;
 }
+}
+// if (isNaN(userInput)) {
+//   errorMessage.innerText = '';
+//   errorMessage.innerText = 'Please enter a number';
+//   return false;

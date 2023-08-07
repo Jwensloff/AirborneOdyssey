@@ -16,7 +16,6 @@ import {
   calculateTotalUserSpending,
   filterUserTripsByDate,
   calculateNewTripCost,
-  checkUserNamePassword 
 } from "./functions";
 
 import {
@@ -43,7 +42,7 @@ import {
   seeAllTripsButton,
   displayUserSpendingForThisYear,
   main,
-  generateLoginErrorMessage,
+  checkUserNamePassword,
 } from "./domUpdates";
 
 // create Data
@@ -91,12 +90,13 @@ const generateWebPage = () => {
 
 // event listeners
 loginButton.addEventListener("click", () => {
-  if(checkUserNamePassword(masterData.currentUser) === true) {
+  let checkLogin =  checkUserNamePassword(masterData.currentUser);
+  if (checkLogin === false) {
+    return;
+  } else {
     showMainPage();
     main.style.backgroundColor = 'rgb(224, 218, 209)'
     main.style.boxShadow = '0px 0px 9px 10px rgba(224, 218, 209)'
-  } else {
-    generateLoginErrorMessage();
   }
 });
 

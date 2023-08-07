@@ -80,7 +80,6 @@ export const calculateTotalUserSpending = (findUsersTrips, findUserTripDestinati
 };
 
 export const calculateNewTripCost = (allDestinations) => {
-//  console.log(allDestinations)
  console.log(newTripObject)
   const newDestinaton = allDestinations.find(destination => destination.id === newTripObject.destinationID)
   console.log('new destination',newDestinaton)
@@ -94,20 +93,4 @@ export const calculateNewTripCost = (allDestinations) => {
   const travelersAgentFee = (newTripCost + 0.1*newTripCost)
   const totalNewTripCost = newTripCost + travelersAgentFee
   return totalNewTripCost
-}
-
-export const checkUserNamePassword = (currentUser) => {
-
-  let userName = document.querySelector('.username-input');
-
-  let password = document.querySelector('.password-input');
-
-  if(userName === `traveler${currentUser.id}` && 
-    password === 'travel'){
-      return true;
-    }
-    else {
-      return false;
-    }
-
 }
