@@ -12,15 +12,20 @@ import { newTripObject, masterData } from "./scripts";
 export const createFetchRequests = () => {
   return urlArray.map((url) =>
     fetch(url)
-      .then((response) => response.json())
-      .catch((error) => console.log(error))
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok.');
+        }
+        return response.json();
+      })
+      .catch((error) => console.log("Error", error))
   );
 };
 
 export const postUserTrip = () => {
   console.log("from apiCalls file", newTripObject);
-  let newID = masterData.trips.length + 1
-  
+  let newID = masterData.trips.length + 1;
+
   let data = {
     id: newID,
     userID: newTripObject.userID,

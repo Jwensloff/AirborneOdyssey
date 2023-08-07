@@ -72,7 +72,7 @@ const generateWebPage = () => {
     masterData.currentUserId,
     masterData.travelers
   );
-  console.log('masterData', masterData.currentUser);
+  console.log("masterData", masterData.currentUser);
 
   const userTrips = findUsersTrips(masterData.currentUserId, masterData.trips);
   const userTripsByDate = filterUserTripsByDate(userTrips);
@@ -93,11 +93,11 @@ const generateWebPage = () => {
 loginButton.addEventListener("click", () => {
   // let checkLogin =  checkUserNamePassword(masterData.currentUser);
   // if (checkLogin === false) {
-    // return;
+  // return;
   // } else {
-    showMainPage();
-    main.style.backgroundColor = 'rgb(224, 218, 209)'
-    main.style.boxShadow = '0px 0px 9px 10px rgba(224, 218, 209)'
+  showMainPage();
+  main.style.backgroundColor = "rgb(224, 218, 209)";
+  main.style.boxShadow = "0px 0px 9px 10px rgba(224, 218, 209)";
   // }
 });
 
@@ -140,22 +140,22 @@ numPeopleInput.addEventListener("change", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
   console.log(newTripObject);
-  if(checkUserTripInput() === false){
+  if (checkUserTripInput() === false) {
     return;
   } else {
     displayBookItButton();
-  };
+  }
 });
 
 numPeopleInput.addEventListener("keyup", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
   console.log(newTripObject);
-  if(checkUserTripInput() === false){
+  if (checkUserTripInput() === false) {
     return;
   } else {
     displayBookItButton();
-  };
+  }
 });
 
 bookButton.addEventListener("click", () => {
@@ -163,7 +163,12 @@ bookButton.addEventListener("click", () => {
     .then(() => {
       return fetch("http://localhost:3001/api/v1/trips");
     })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network resposne was not ok.");
+      }
+      return response.json();
+    })
     .then((data) => {
       // console.log("all trips", data);
       masterData.trips = data.trips;
@@ -178,10 +183,10 @@ bookButton.addEventListener("click", () => {
         masterData.destinations
       );
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log('Error', error));
 
-    displaySelectNumPeople();
-    bookButton.classList.add('hidden')
+  displaySelectNumPeople();
+  bookButton.classList.add("hidden");
 });
 
 seeAllTripsButton.addEventListener("click", () => {
