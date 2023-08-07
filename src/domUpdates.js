@@ -3,6 +3,9 @@ import { calculateTotalUserSpending } from "./functions";
 
 // query selectors
 
+// main
+export const main = document.querySelector('main');
+
 // buttons
 export const loginButton = document.querySelector(".login-button");
 export const newTripButton = document.querySelector(".new-trip-button");

@@ -41,6 +41,7 @@ import {
   displayConfirmationPage,
   seeAllTripsButton,
   displayUserSpendingForThisYear,
+  main
 } from "./domUpdates";
 
 // create Data
@@ -89,6 +90,8 @@ const generateWebPage = () => {
 // event listeners
 loginButton.addEventListener("click", () => {
   showMainPage();
+  main.style.backgroundColor = 'rgb(224, 218, 209)'
+  main.style.boxShadow = '0px 0px 9px 10px rgba(224, 218, 209)'
 });
 
 newTripButton.addEventListener("click", () => {
