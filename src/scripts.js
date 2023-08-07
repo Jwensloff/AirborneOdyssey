@@ -43,6 +43,7 @@ import {
   displayUserSpendingForThisYear,
   main,
   checkUserNamePassword,
+  checkUserTripInput,
 } from "./domUpdates";
 
 // create Data
@@ -90,14 +91,14 @@ const generateWebPage = () => {
 
 // event listeners
 loginButton.addEventListener("click", () => {
-  let checkLogin =  checkUserNamePassword(masterData.currentUser);
-  if (checkLogin === false) {
-    return;
-  } else {
+  // let checkLogin =  checkUserNamePassword(masterData.currentUser);
+  // if (checkLogin === false) {
+    // return;
+  // } else {
     showMainPage();
     main.style.backgroundColor = 'rgb(224, 218, 209)'
     main.style.boxShadow = '0px 0px 9px 10px rgba(224, 218, 209)'
-  }
+  // }
 });
 
 newTripButton.addEventListener("click", () => {
@@ -139,14 +140,22 @@ numPeopleInput.addEventListener("change", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
   console.log(newTripObject);
-  displayBookItButton();
+  if(checkUserTripInput() === false){
+    return;
+  } else {
+    displayBookItButton();
+  };
 });
 
 numPeopleInput.addEventListener("keyup", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
   console.log(newTripObject);
-  displayBookItButton();
+  if(checkUserTripInput() === false){
+    return;
+  } else {
+    displayBookItButton();
+  };
 });
 
 bookButton.addEventListener("click", () => {

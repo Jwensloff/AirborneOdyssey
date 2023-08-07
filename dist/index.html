@@ -27,9 +27,9 @@
   <nav>
     <div class="login-wrapper login">
         <p class="error-message"></p>
-      <input class="username-input login-input login" type="text" id="number-input" placeholder="Username" />
+      <input class="username-input login-input login" type="text" placeholder="Username" />
 
-      <input class="password-input login-input login" type="password" id="number-input" placeholder="Password" />
+      <input class="password-input login-input login" type="password" placeholder="Password" />
 
       <button class="login-button login">
         <i class="fa-solid fa-user login" style="color: #000000;"></i>Login</button>
@@ -107,10 +107,12 @@
             <label class="select-num-people hidden">How many people are going?</label>
             <input class="select-num-people hidden num-traveler-input" type="number" min="0" max="100" step="1">
           </div>
+          <p class="error-message input-error"></p>
           <button class="book-button hidden">Book this trip!</button>
+          <p class="error-message input-error"></p>
         </div>
       </section>
-      <section class="confirmation-page hidden"></section>
+      <section class="confirmation-page hidden">
       <div class="confirmation-page-wrapper">
         <h2 class="confirmation-page hidden">Pack your bags!</h2>
         <p class="confirmation-page-text confirmation-page hidden display-new-trip-location">You're going to destination</p>
@@ -119,6 +121,7 @@
         <button class="confirmation-page-text confirmation-page hidden see-all-trips-button">See all your trips</button>
         <div class="confirmation-page-text confirmation-page hidden display-new-trip-image"></div>
       </div>
+    </section>
     </div>
   </main>
 
