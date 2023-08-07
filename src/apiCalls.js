@@ -6,7 +6,12 @@ const allDestinations = "http://localhost:3001/api/v1/destinations";
 
 const urlArray = [allTravelersURL, allTripsURL, allDestinations];
 
-import { newTripObject, masterData } from "./scripts";
+import { newTripObject } from "./functions";
+
+export let masterData = {
+  currentUserId: 2,
+  today: dayjs().format("YYYY/MM/DD"),
+};
 
 // GET requests
 export const createFetchRequests = () => {
