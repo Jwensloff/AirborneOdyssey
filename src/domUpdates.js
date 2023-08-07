@@ -209,7 +209,7 @@ export function setupDateInputs() {
 }
 
 export const displaySelectNumPeople = () => {
-  displayNumInputField.forEach((item) => item.classList.remove("hidden"));
+  displayNumInputField.forEach((item) => item.classList.toggle("hidden"));
 };
 
 export const displayBookItButton = () => {

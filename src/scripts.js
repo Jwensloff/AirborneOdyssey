@@ -40,7 +40,7 @@ import {
   bookButton,
   displayConfirmationPage,
   seeAllTripsButton,
-  displayUserSpendingForThisYear
+  displayUserSpendingForThisYear,
 } from "./domUpdates";
 
 // create Data
@@ -82,14 +82,13 @@ const generateWebPage = () => {
   displayUserSpending(
     calculateTotalUserSpending(userTrips, userTripDestinations)
   );
-  displayUserSpendingForThisYear(userTripsByDate, userTripDestinations)
+  displayUserSpendingForThisYear(userTripsByDate, userTripDestinations);
   renderMainPage(userTripsByDate, userTripDestinations);
 };
 
 // event listeners
 loginButton.addEventListener("click", () => {
-  
-  showMainPage()
+  showMainPage();
 });
 
 newTripButton.addEventListener("click", () => {
@@ -131,7 +130,6 @@ numPeopleInput.addEventListener("change", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
   console.log(newTripObject);
-  // console.log('HELLO', event)
   displayBookItButton();
 });
 
@@ -139,7 +137,6 @@ numPeopleInput.addEventListener("keyup", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
   console.log(newTripObject);
-  // console.log('HELLO1')
   displayBookItButton();
 });
 
@@ -157,7 +154,6 @@ bookButton.addEventListener("click", () => {
         masterData.trips
       );
       const userTripsByDate = filterUserTripsByDate(userTrips);
-
       displayConfirmationPage(
         newTripObject,
         calculateNewTripCost(masterData.destinations),
@@ -165,12 +161,17 @@ bookButton.addEventListener("click", () => {
       );
     })
     .catch((error) => console.log(error));
+
+    displaySelectNumPeople();
+    bookButton.classList.add('hidden')
 });
 
 seeAllTripsButton.addEventListener("click", () => {
   backToMainPage();
   generateWebPage();
-
+  numPeopleInput.value = "";
+  // bookButton.classList.add('hidden')
+  // select-num-people
   // const allDestinations = masterData.destinations
   // updateDisplayNewTripCost(calculateNewTripCost(masterData.destinations, newTripObject));
 });
