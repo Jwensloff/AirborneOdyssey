@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
-import { newTripObject } from './scripts'
+// import { newTripObject } from './scripts'
+export let newTripObject;
 
 export const getCurrentUserInformation = (travelerID, travelersArray) => {
   let traveler = travelersArray.find((traveler) => traveler.id === travelerID);

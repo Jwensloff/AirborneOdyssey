@@ -7,7 +7,7 @@ import "./css/styles.css";
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import "./images/turing-logo.png";
 
-import { createFetchRequests, postUserTrip } from "./apiCalls";
+import { createFetchRequests, postUserTrip, masterData } from "./apiCalls";
 
 import {
   findUsersTrips,
@@ -16,6 +16,7 @@ import {
   calculateTotalUserSpending,
   filterUserTripsByDate,
   calculateNewTripCost,
+  newTripObject,
 } from "./functions";
 
 import {
@@ -47,12 +48,6 @@ import {
 } from "./domUpdates";
 
 // create Data
-export let masterData = {
-  currentUserId: 2,
-  today: dayjs().format("YYYY/MM/DD"),
-};
-
-export let newTripObject;
 
 window.addEventListener("load", () => {
   Promise.all(createFetchRequests()).then((promiseArray) => {
