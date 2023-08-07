@@ -63,10 +63,6 @@ window.addEventListener("load", () => {
   });
 });
 
-// let updateMainPageData = () => {
-//   updateDisplayNewTripCost(calculateNewTripCost(masterData.destinations));
-// };
-
 const generateWebPage = () => {
   masterData.currentUser = getCurrentUserInformation(
     masterData.currentUserId,
@@ -91,14 +87,14 @@ const generateWebPage = () => {
 
 // event listeners
 loginButton.addEventListener("click", () => {
-  // let checkLogin =  checkUserNamePassword(masterData.currentUser);
-  // if (checkLogin === false) {
-  // return;
-  // } else {
+  let checkLogin =  checkUserNamePassword(masterData.currentUser);
+  if (checkLogin === false) {
+  return;
+  } else {
   showMainPage();
   main.style.backgroundColor = "rgb(224, 218, 209)";
   main.style.boxShadow = "0px 0px 9px 10px rgba(224, 218, 209)";
-  // }
+  }
 });
 
 newTripButton.addEventListener("click", () => {
@@ -193,8 +189,4 @@ seeAllTripsButton.addEventListener("click", () => {
   backToMainPage();
   generateWebPage();
   numPeopleInput.value = "";
-  // bookButton.classList.add('hidden')
-  // select-num-people
-  // const allDestinations = masterData.destinations
-  // updateDisplayNewTripCost(calculateNewTripCost(masterData.destinations, newTripObject));
 });
