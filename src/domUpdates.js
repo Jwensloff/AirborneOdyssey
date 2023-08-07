@@ -41,9 +41,9 @@ const planUserTripPage = document.querySelector(".user-plan-trip-page");
 const displayNewTripLocation = document.querySelector(
   ".display-new-trip-location"
 );
-const displayNewTripDuration = document.querySelector(
-  ".display-new-trip-duration"
-);
+// const displayNewTripDuration = document.querySelector(
+//   ".display-new-trip-duration"
+// );
 const displayNewTripTotalCost = document.querySelector(
   ".display-new-trip-total-cost"
 );
@@ -64,20 +64,23 @@ export const displayConfirmationPage = (
   const newDestinaton = allDestinations.find(
     (destination) => destination.id === newTripObject.destinationID
   );
-  displayNewTripLocation.innerText = `You're going to ${newDestinaton.destination}!`;
 
   const tripStartDate = dayjs(newTripObject.date);
   const tripEndDate = tripStartDate.add(newTripObject.duration, "day");
-  displayNewTripDuration.innerText = "";
-  displayNewTripDuration.innerText = `From ${tripStartDate.format(
+  displayNewTripLocation.innerText = `You're going to ${newDestinaton.destination} from ${tripStartDate.format(
     "MM/DD/YYYY"
-  )} through ${tripEndDate.format("MM/DD/YYYY")}`;
+  )} through ${tripEndDate.format("MM/DD/YYYY")}.`;
+
+  // displayNewTripDuration.innerText = "";
+  // displayNewTripDuration.innerText = `from ${tripStartDate.format(
+  //   "MM/DD/YYYY"
+  // )} through ${tripEndDate.format("MM/DD/YYYY")}`;
 
   displayNewTripTotalCost.innerText = "";
   displayNewTripTotalCost.innerText = `Total cost: $ ${newTripCost}`;
 
   displayNewTripImg.innerHTML = "";
-  displayNewTripImg.innerHTML = `<img class='pick-destination-card img' 
+  displayNewTripImg.innerHTML = `<img class='confirmation-page-image' 
    src='${newDestinaton.image}' alt='${newDestinaton.alt}'></img>`;
 };
 

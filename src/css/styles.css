@@ -237,27 +237,9 @@ input{
   font-size: 15px;
 }
 
-.confi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .select-destination-button{
   width:140px;
 }
-
 
 .card-text-wrapper > button {
   margin-top: 5px;
@@ -328,4 +310,25 @@ cursor: pointer;
 .date{
   margin-right: 30px;
   margin-left: 5px;
+}
+
+.confirmation-page-wrapper{
+  font-family: 'Work Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.confirmation-page-wrapper > button{
+  height: 50px;
+  width: 150px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.confirmation-page-image{
+  height:400px;
+  width: 800px;
 }
