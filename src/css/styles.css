@@ -3,11 +3,12 @@ body {
   font-family: 'Raleway', sans-serif;
   margin: 0px;
   padding: 0px;
-  
   background-image: url('../images/chris-briggs-V72Hk6LjjjI-unsplash.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
 }
 
 main.alt-bg {
@@ -15,14 +16,14 @@ main.alt-bg {
 }
 
 main{
-  height: 100% !important;
+  /* height: 100% !important; */
   background-color: rgb(255, 255, 255, 0.4);
-  margin: 0 !important;
-  padding: 0 !important;
+  /* margin: 0 !important; */
+  /* padding: 0 !important; */
 }
 
 nav {
-  /* background-color: rgb(255, 255, 255, 0.4); */
+  background-color: rgb(255, 255, 255, 0.4);
   font-family: 'Josefin Sans', sans-serif;
   font-family: 'Raleway', sans-serif;
   font-family: 'Work Sans', sans-serif;
@@ -30,11 +31,11 @@ nav {
   flex-direction: column;
   justify-content: center;
   height: 10vh;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
   padding-left: 20px;
   padding-right: 30px;
-  margin: 0px ;
-  padding-bottom: 0px;
+  /* margin: 0px ; */
+  /* padding-bottom: 0px; */
 }
 
 .main-wrapper{
