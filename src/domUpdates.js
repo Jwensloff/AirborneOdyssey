@@ -3,6 +3,9 @@ import { calculateTotalUserSpending } from "./functions";
 
 // query selectors
 
+// main
+export const main = document.querySelector('main');
+
 // buttons
 export const loginButton = document.querySelector(".login-button");
 export const newTripButton = document.querySelector(".new-trip-button");
@@ -33,7 +36,6 @@ const displayNewTripCost = document.querySelector(
 const loginItems = document.querySelectorAll(".login");
 const dashboardItems = document.querySelectorAll(".dashboard");
 const destinationSelectionItems = document.querySelector(".destinations");
-const destinationsGrid = document.querySelector(".destinations-grid");
 const dashBoardPage = document.querySelectorAll(".dashboard");
 const showUserTripPlanPage = document.querySelector(".user-plan-trip-page");
 export const pickDestinationGrid = document.querySelector(".destinations-grid");
@@ -42,9 +44,9 @@ const planUserTripPage = document.querySelector(".user-plan-trip-page");
 const displayNewTripLocation = document.querySelector(
   ".display-new-trip-location"
 );
-const displayNewTripDuration = document.querySelector(
-  ".display-new-trip-duration"
-);
+// const displayNewTripDuration = document.querySelector(
+//   ".display-new-trip-duration"
+// );
 const displayNewTripTotalCost = document.querySelector(
   ".display-new-trip-total-cost"
 );
@@ -65,20 +67,23 @@ export const displayConfirmationPage = (
   const newDestinaton = allDestinations.find(
     (destination) => destination.id === newTripObject.destinationID
   );
-  displayNewTripLocation.innerText = `You're going to ${newDestinaton.destination}!`;
 
   const tripStartDate = dayjs(newTripObject.date);
   const tripEndDate = tripStartDate.add(newTripObject.duration, "day");
-  displayNewTripDuration.innerText = "";
-  displayNewTripDuration.innerText = `From ${tripStartDate.format(
+  displayNewTripLocation.innerText = `You're going to ${newDestinaton.destination} from ${tripStartDate.format(
     "MM/DD/YYYY"
-  )} through ${tripEndDate.format("MM/DD/YYYY")}`;
+  )} through ${tripEndDate.format("MM/DD/YYYY")}.`;
+
+  // displayNewTripDuration.innerText = "";
+  // displayNewTripDuration.innerText = `from ${tripStartDate.format(
+  //   "MM/DD/YYYY"
+  // )} through ${tripEndDate.format("MM/DD/YYYY")}`;
 
   displayNewTripTotalCost.innerText = "";
   displayNewTripTotalCost.innerText = `Total cost: $ ${newTripCost}`;
 
   displayNewTripImg.innerHTML = "";
-  displayNewTripImg.innerHTML = `<img class='pick-destination-card img' 
+  displayNewTripImg.innerHTML = `<img class='confirmation-page-image' 
    src='${newDestinaton.image}' alt='${newDestinaton.alt}'></img>`;
 };
 
@@ -136,7 +141,7 @@ export const renderMainPage = (allUserTrips, userTripDestinations) => {
 };
 
 export const showChooseDestinationPage = (allDestinations) => {
-  destinationsGrid.innerHTML  = '';
+  pickDestinationGrid.innerHTML  = '';
   dashBoardPage.forEach((item) => item.classList.add("hidden"));
   destinationSelectionItems.classList.remove("hidden");
   let sortedDestinations = allDestinations.sort((a, b) => a.destination.localeCompare(b.destination));
@@ -144,13 +149,13 @@ export const showChooseDestinationPage = (allDestinations) => {
   sortedDestinations.forEach((destination) => {
     if (destination.id !== 45) {
       // console.log(destination.id)
-      destinationsGrid.innerHTML += `<article class='pick-destination-card' id='${destination.id}'>
+      pickDestinationGrid.innerHTML += `<article class='pick-destination-card' id='${destination.id}'>
   <img class='pick-destination-card img' src='${destination.image}' alt='${destination.alt}'>
   <div class="card-text-wrapper">
   <h2>${destination.destination}</h2>
   <p> Lodging: $${destination.estimatedLodgingCostPerDay} per person</p>
   <p>Flight: $${destination.estimatedFlightCostPerPerson} per person</p>
-  <button id='${destination.id}'>Select Location</button></article></div>`;
+  <button class="select-destination-button" id='${destination.id}'>Select Location</button></article></div>`;
     }
   });
 };
@@ -207,7 +212,7 @@ export function setupDateInputs() {
 }
 
 export const displaySelectNumPeople = () => {
-  displayNumInputField.forEach((item) => item.classList.remove("hidden"));
+  displayNumInputField.forEach((item) => item.classList.toggle("hidden"));
 };
 
 export const displayBookItButton = () => {
