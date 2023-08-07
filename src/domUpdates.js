@@ -33,7 +33,6 @@ const displayNewTripCost = document.querySelector(
 const loginItems = document.querySelectorAll(".login");
 const dashboardItems = document.querySelectorAll(".dashboard");
 const destinationSelectionItems = document.querySelector(".destinations");
-const destinationsGrid = document.querySelector(".destinations-grid");
 const dashBoardPage = document.querySelectorAll(".dashboard");
 const showUserTripPlanPage = document.querySelector(".user-plan-trip-page");
 export const pickDestinationGrid = document.querySelector(".destinations-grid");
@@ -136,7 +135,7 @@ export const renderMainPage = (allUserTrips, userTripDestinations) => {
 };
 
 export const showChooseDestinationPage = (allDestinations) => {
-  destinationsGrid.innerHTML  = '';
+  pickDestinationGrid.innerHTML  = '';
   dashBoardPage.forEach((item) => item.classList.add("hidden"));
   destinationSelectionItems.classList.remove("hidden");
   let sortedDestinations = allDestinations.sort((a, b) => a.destination.localeCompare(b.destination));
@@ -144,13 +143,13 @@ export const showChooseDestinationPage = (allDestinations) => {
   sortedDestinations.forEach((destination) => {
     if (destination.id !== 45) {
       // console.log(destination.id)
-      destinationsGrid.innerHTML += `<article class='pick-destination-card' id='${destination.id}'>
+      pickDestinationGrid.innerHTML += `<article class='pick-destination-card' id='${destination.id}'>
   <img class='pick-destination-card img' src='${destination.image}' alt='${destination.alt}'>
   <div class="card-text-wrapper">
   <h2>${destination.destination}</h2>
   <p> Lodging: $${destination.estimatedLodgingCostPerDay} per person</p>
   <p>Flight: $${destination.estimatedFlightCostPerPerson} per person</p>
-  <button id='${destination.id}'>Select Location</button></article></div>`;
+  <button class="select-destination-button" id='${destination.id}'>Select Location</button></article></div>`;
     }
   });
 };
