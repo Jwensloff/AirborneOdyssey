@@ -16,6 +16,7 @@ import {
   calculateTotalUserSpending,
   filterUserTripsByDate,
   calculateNewTripCost,
+  checkUserNamePassword 
 } from "./functions";
 
 import {
@@ -41,7 +42,8 @@ import {
   displayConfirmationPage,
   seeAllTripsButton,
   displayUserSpendingForThisYear,
-  main
+  main,
+  generateLoginErrorMessage,
 } from "./domUpdates";
 
 // create Data
@@ -57,7 +59,6 @@ window.addEventListener("load", () => {
     masterData.travelers = promiseArray[0].travelers;
     masterData.trips = promiseArray[1].trips;
     masterData.destinations = promiseArray[2].destinations;
-    // console.log('masterData', masterData);
     generateWebPage();
   });
 });
@@ -71,6 +72,7 @@ const generateWebPage = () => {
     masterData.currentUserId,
     masterData.travelers
   );
+  console.log('masterData', masterData.currentUser);
 
   const userTrips = findUsersTrips(masterData.currentUserId, masterData.trips);
   const userTripsByDate = filterUserTripsByDate(userTrips);
@@ -89,9 +91,13 @@ const generateWebPage = () => {
 
 // event listeners
 loginButton.addEventListener("click", () => {
-  showMainPage();
-  main.style.backgroundColor = 'rgb(224, 218, 209)'
-  main.style.boxShadow = '0px 0px 9px 10px rgba(224, 218, 209)'
+  if(checkUserNamePassword(masterData.currentUser) === true) {
+    showMainPage();
+    main.style.backgroundColor = 'rgb(224, 218, 209)'
+    main.style.boxShadow = '0px 0px 9px 10px rgba(224, 218, 209)'
+  } else {
+    generateLoginErrorMessage();
+  }
 });
 
 newTripButton.addEventListener("click", () => {

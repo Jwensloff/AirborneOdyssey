@@ -24,6 +24,7 @@ export const displayNumInputField =
 
 // update DOM
 
+
 const mainNav = document.querySelector(".main-nav-wrapper");
 const userName = document.querySelector(".user-name");
 const userSpending = document.querySelector(".display-user-spending");
@@ -252,7 +253,7 @@ const renderUpcomingTripsGrid = (allUserTrips, userTripDestinations) => {
     const upcomingTripDestination = userTripDestinations.find(
       (destination) => destination.id === trip.destinationID
     );
-    console.log(allUserTrips.upcomingTrips);
+    // console.log(allUserTrips.upcomingTrips);
     const tripStartDate = dayjs(trip.date);
     const tripEndDate = tripStartDate.add(trip.duration, "day");
 
@@ -288,3 +289,12 @@ export const displayUserSpendingForThisYear = (
     displayNewTripCost.innerText = `You have spent $${spendingOnTripsThisYear} on trips this year`;
   }
 };
+
+
+export const generateLoginErrorMessage = (currentUser) => {
+  let userName = document.querySelector('.username-input');
+
+  let password = document.querySelector('.password-input');
+  
+  if(userName !== currentUser.id){}
+}

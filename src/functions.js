@@ -96,6 +96,18 @@ export const calculateNewTripCost = (allDestinations) => {
   return totalNewTripCost
 }
 
+export const checkUserNamePassword = (currentUser) => {
 
+  let userName = document.querySelector('.username-input');
 
-// calculate the user spendinf from the allTrips.upcoming trips 
+  let password = document.querySelector('.password-input');
+
+  if(userName === `traveler${currentUser.id}` && 
+    password === 'travel'){
+      return true;
+    }
+    else {
+      return false;
+    }
+
+}
