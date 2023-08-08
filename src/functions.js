@@ -104,12 +104,12 @@ export const calculateNewTripCost = (allDestinations, newTripObject) => {
 }
 
 export const validateUserLogin = (username) => {
-  console.log('from functions',username)
-  console.log('from functions',typeof(username))
+  // console.log('from functions',username)
+  // console.log('from functions',typeof(username))
   const idBasedOnLogin = username.slice(8);
   const id = Number(idBasedOnLogin)
   if(idBasedOnLogin < 1 || idBasedOnLogin > 50){
-    console.log('not between 50: idBasedOnLogin', idBasedOnLogin)
+    // console.log('not between 50: idBasedOnLogin', idBasedOnLogin)
     return false
   } 
   if(!Number.isInteger(id)){

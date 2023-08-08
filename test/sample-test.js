@@ -8,6 +8,7 @@ import {
   calculateTotalUserSpending,
   filterUserTripsByDate,
   calculateNewTripCost,
+  validateUserLogin,
 } from "../src/functions";
 
 // describe('See if the tests are running', () => {
@@ -342,3 +343,17 @@ describe('Trip cost', () => {
   expect(calculateNewTripCost(destinations, newTripObject)).to.equal(0)
   });
 });
+
+describe('Check login', () => {
+  
+  it('should return true' , () => {
+    const username = 'traveler6';
+    expect(validateUserLogin(username)).to.equal(true)
+  });
+
+  it('should return true' , () => {
+    const username = 'traveler62'
+    expect(validateUserLogin(username)).to.equal(false)
+  })
+
+})
