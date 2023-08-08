@@ -179,8 +179,8 @@ export const backToMainPage = () => {
   // resetPlanTripInput.forEach((item) => item.classList.add("hidden"));
   // renderMainPage(allUserTrips, userTripDestinations);
   numPeopleInput.value = '';
-  startDateInput.value = 'YYYY/MM/DD';
-  endDateInput.value = 'YYYY/MM/DD';
+  startDateInput.value = 'yyyy/mm/dd';
+  endDateInput.value = 'yyyy/mm/dd';
 };
 
 export const captureDestinationID = (masterData, event) => {
@@ -216,8 +216,10 @@ export function setupDateInputs() {
     const selectedStartDate = startDateInput.value;
 
     // Set the minimum date of end date input to the selected start date
-    endDateInput.min = selectedStartDate;
 
+    endDateInput.min = selectedStartDate;
+    inputError.innerText = "";
+    inputError.innerText = "The end date must be after the spcified start date.";
     // Check if the current selected end date is before the selected start date
     if (endDateInput.value < selectedStartDate) {
       // If it is, reset the end date to the selected start date
@@ -228,6 +230,7 @@ export function setupDateInputs() {
 
 const numPeipleInputWreapper = document.querySelector('.select-num-people-wrapper');
 export const displaySelectNumPeople = () => {
+  inputError.innerText = "";
   displayNumInputField.forEach((item) => item.classList.remove("hidden"));
   numPeipleInputWreapper.classList.remove("hidden")
 };

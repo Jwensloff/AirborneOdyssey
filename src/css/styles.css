@@ -321,8 +321,8 @@ button:hover {
 }
 
 .confirmation-page-image {
-  height: 400px;
-  width: 800px;
+  height: 350px;
+  width: auto;
 }
 
 .confirmation-page-text {
