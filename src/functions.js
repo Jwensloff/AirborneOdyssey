@@ -4,12 +4,22 @@ export let newTripObject;
 
 export const getCurrentUserInformation = (travelerID, travelersArray) => {
   let traveler = travelersArray.find((traveler) => traveler.id === travelerID);
-  return traveler;
+  if(!traveler){
+    return 'The traveler id you entered does not match our records.'
+  } else {
+    return traveler;
+  }
 };
 
 export const findUsersTrips = (travelerID, tripsArray) => {
   const userTrips = tripsArray.filter((trip) => trip.userID === travelerID);
-  return userTrips;
+  console.log('userTrips',userTrips)
+
+  if(!userTrips || userTrips.length === 0){
+    return 'The traveler id you entered does not match our records.'
+  } else {
+    return userTrips;
+  }
 };
 
 export const filterUserTripsByDate = (userTrips) => {
