@@ -6,10 +6,10 @@ const allDestinations = "http://localhost:3001/api/v1/destinations";
 
 const urlArray = [allTravelersURL, allTripsURL, allDestinations];
 
-import { newTripObject } from "./functions";
+import { newTripObject, validateUserLogin } from "./functions";
 
 export let masterData = {
-  currentUserId: 2,
+  // currentUserId: 2,
   today: dayjs().format("YYYY/MM/DD"),
 };
 
@@ -18,6 +18,7 @@ export const createFetchRequests = () => {
   return urlArray.map((url) =>
     fetch(url)
       .then((response) => {
+        console.log(response)
         if (!response.ok) {
           throw new Error('Network response was not ok.');
         }
@@ -48,7 +49,10 @@ export const postUserTrip = () => {
     headers: {
       "Content-Type": "application/json",
     },
-  }).catch((error) => {
+  }).then(response => {
+    console.log('POST response', response)
+  })
+  .catch((error) => {
     console.log(error);
     throw error;
   });

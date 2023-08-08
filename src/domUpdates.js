@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { calculateTotalUserSpending } from "./functions";
+import { calculateTotalUserSpending, validateUserLogin } from "./functions";
 
 // query selectors
 
@@ -17,8 +17,8 @@ export const seeAllTripsButton = document.querySelector(
 
 // user input
 export const inputError = document.querySelector(".input-error");
-const passwordElement = document.querySelector(".password-input");
-const userNameElement = document.querySelector(".username-input");
+export const passwordElement = document.querySelector(".password-input");
+export const userNameElement = document.querySelector(".username-input");
 
 export const errorMessage = document.querySelector(".error-message");
 export const startDateInput = document.getElementById("start-date-input");
@@ -199,9 +199,9 @@ export function setupDateInputs() {
   const today = dayjs().format("YYYY-MM-DD");
 
   // Set the value and min attributes of the date inputs to today's date
-  startDateInput.value = today;
+  // startDateInput.value = today;
   startDateInput.min = today;
-  endDateInput.value = today;
+  // endDateInput.value = today;
   endDateInput.min = today;
 
   // Add event listener to start date input
@@ -298,10 +298,10 @@ export const displayUserSpendingForThisYear = (
   }
 };
 
-export const checkUserNamePassword = (currentUser) => {
-  let username = userNameElement.value;
-  let password = passwordElement.value;
-  console.log("username", `traveler${currentUser.id}`);
+
+
+export const checkUserNamePassword = (username, password) => {
+  // console.log("username", `traveler${currentUser.id}`);
   console.log("password", password);
   if (username === "" && password == "") {
     errorMessage.innerText = "";
@@ -313,17 +313,22 @@ export const checkUserNamePassword = (currentUser) => {
     errorMessage.innerText = "Please enter your username";
     return false;
   }
+  if(!validateUserLogin(username)) {
+    errorMessage.innerText = "";
+    errorMessage.innerText = "Please enter a valid user id";
+    return false;
+  }
   if (password === "") {
     errorMessage.innerText = "";
     errorMessage.innerText = "Please enter your password";
     return false;
   }
-  if (username !== `traveler${currentUser.id}`) {
-    errorMessage.innerText = "";
-    errorMessage.innerText =
-      "The username you entered is incorrect, please try again";
-    return false;
-  }
+  // if (username !== `traveler${currentUser.id}`) {
+  //   errorMessage.innerText = "";
+  //   errorMessage.innerText =
+  //     "The username you entered is incorrect, please try again";
+  //   return false;
+  // }
   if (password !== `travel`) {
     errorMessage.innerText = "";
     errorMessage.innerText =
