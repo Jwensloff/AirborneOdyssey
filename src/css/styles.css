@@ -46,7 +46,7 @@ nav {
   flex-direction: column;
   align-items: center;
   align-items: left;
-  width:100%;
+  width: 100%;
 }
 
 .login-page > h1 {
@@ -87,9 +87,6 @@ h2 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* padding-top: 20vh; */
-  /* justify-content: center; */
-  /* align-items: flex-end; */
 }
 
 .main-nav-wrapper {
@@ -330,7 +327,7 @@ button:hover {
   margin-bottom: 5px;
 }
 
-.error-message{
+.error-message {
   margin-right: 10px;
   font-weight: 600;
 }

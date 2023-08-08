@@ -7,35 +7,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webpack Starter Kit</title>
   <script src="https://kit.fontawesome.com/c0bac25450.js" crossorigin="anonymous"></script>
-  <!-- <script src="../src/scripts.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Raleway:wght@600&display=swap"
     rel="stylesheet">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Raleway:wght@600&family=Work+Sans:wght@200;300;600&display=swap"
     rel="stylesheet">
-
-
 </head>
 
 <body>
   <nav>
     <div class="login-wrapper login">
-        <p class="error-message"></p>
+      <p class="error-message"></p>
       <input class="username-input login-input login" type="text" placeholder="Username" />
-
       <input class="password-input login-input login" type="password" placeholder="Password" />
-
       <button class="login-button login">
         <i class="fa-solid fa-user login" style="color: #000000;"></i>Login</button>
     </div>
-
-
     <div class="main-nav-wrapper hidden">
       <div class="left-nav-bar-section">
         <button class="home-button main-nav-button"><i class="fa-solid fa-house" style="color: #000000;"></i>
@@ -45,15 +37,10 @@
           trip</button>
       </div>
       <div class="user-icon">
-        <!-- <i class="fa-solid fa-user" style="color: #000000;"></i> -->
         <label class="user-name">User Name</label>
       </div>
     </div>
-
   </nav>
-
-
-
   <main class="main">
     <div class="main-wrapper">
       <div class="welcome-text-wrapper login">
@@ -62,7 +49,6 @@
           <p>Your travels start here</p>
         </div>
       </div>
-
       <section class="dashboard-page dashboard hidden">
         <div class="user-stats-wrapper dashboard">
           <h2 class="dashboard">Your travels summarized:</h2>
@@ -83,7 +69,6 @@
             <div class="past-user-trip-grid dashboard">
             </div>
           </div>
-
         </div>
       </section>
       <section class="display-all-destinations destinations hidden">
@@ -93,7 +78,6 @@
           </div>
         </div>
       </section>
-
       <section class="user-plan-trip-page hidden">
         <div class="plan-trip-wrapper">
           <h2>When would you like to start?</h2>
@@ -101,33 +85,32 @@
             <label for="start-date-input">Start date:</label>
             <input class="date" type="date" name="start-date" id="start-date-input" value="" min="" />
             <label for="end-date-input">End date:</label>
-            <input class="date" type="date" name="end-date" id="end-date-input" value="" min="" placeholder="yyyy/mm/dd"/>
+            <input class="date" type="date" name="end-date" id="end-date-input" value="" min=""
+              placeholder="yyyy/mm/dd" />
           </div>
           <div class="reset select-num-people-wrapper">
             <label class="select-num-people hidden">How many people are going?</label>
             <input class="select-num-people hidden num-traveler-input" type="number" min="0" max="100" step="1">
           </div>
-          <!-- <p class="error-message input-error"></p> -->
           <button class="reset book-button hidden">Book this trip!</button>
           <p class="error-message input-error"></p>
         </div>
       </section>
       <section class="confirmation-page hidden">
-      <div class="confirmation-page-wrapper">
-        <h2 class="confirmation-page hidden">Pack your bags!</h2>
-        <p class="confirmation-page-text confirmation-page hidden display-new-trip-location">You're going to destination</p>
-        <!-- <p class="confirmation-page hidden display-new-trip-duration">From</p> -->
-        <p class="confirmation-page-text confirmation-page hidden display-new-trip-total-cost">Total cost:</p>
-        <button class="confirmation-page-text confirmation-page hidden see-all-trips-button">See all your trips</button>
-        <div class="confirmation-page-text confirmation-page hidden display-new-trip-image"></div>
-      </div>
-    </section>
+        <div class="confirmation-page-wrapper">
+          <h2 class="confirmation-page hidden">Pack your bags!</h2>
+          <p class="confirmation-page-text confirmation-page hidden display-new-trip-location">You're going to
+            destination</p>
+          <p class="confirmation-page-text confirmation-page hidden display-new-trip-total-cost">Total cost:</p>
+          <button class="confirmation-page-text confirmation-page hidden see-all-trips-button">See all your
+            trips</button>
+          <div class="confirmation-page-text confirmation-page hidden display-new-trip-image"></div>
+        </div>
+      </section>
     </div>
   </main>
-
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 
 </html>

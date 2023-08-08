@@ -35,7 +35,7 @@ const userName = document.querySelector(".user-name");
 const userSpending = document.querySelector(".display-user-spending");
 const pastUserTripGrid = document.querySelector(".past-user-trip-grid");
 const upcomingUserTripGrid = document.querySelector(".upcoming-trip-grid");
-const resetPlanTripInput = document.querySelectorAll('.reset');
+const resetPlanTripInput = document.querySelectorAll(".reset");
 const displayNewTripCost = document.querySelector(
   ".display-upcoming-trip-cost"
 );
@@ -50,9 +50,6 @@ const planUserTripPage = document.querySelector(".user-plan-trip-page");
 const displayNewTripLocation = document.querySelector(
   ".display-new-trip-location"
 );
-// const displayNewTripDuration = document.querySelector(
-//   ".display-new-trip-duration"
-// );
 const displayNewTripTotalCost = document.querySelector(
   ".display-new-trip-total-cost"
 );
@@ -81,12 +78,6 @@ export const displayConfirmationPage = (
   } from ${tripStartDate.format("MM/DD/YYYY")} through ${tripEndDate.format(
     "MM/DD/YYYY"
   )}.`;
-
-  // displayNewTripDuration.innerText = "";
-  // displayNewTripDuration.innerText = `from ${tripStartDate.format(
-  //   "MM/DD/YYYY"
-  // )} through ${tripEndDate.format("MM/DD/YYYY")}`;
-
   displayNewTripTotalCost.innerText = "";
   displayNewTripTotalCost.innerText = `Total cost: $${newTripCost}`;
 
@@ -114,8 +105,6 @@ export const displayUserSpending = (calculatedTotalUserSpending) => {
 export const renderMainPage = (allUserTrips, userTripDestinations) => {
   pastUserTripGrid.innerHTML = "";
 
-  console.log("from Dom updates", allUserTrips.pastTrips);
-
   allUserTrips.pastTrips.forEach((trip) => {
     const currentTripDestination = userTripDestinations.find(
       (destination) => destination.id === trip.destinationID
@@ -138,7 +127,6 @@ export const renderMainPage = (allUserTrips, userTripDestinations) => {
     )}</p>  </article>
     </div>`;
   });
-  // console.log(allUserTrips.upcomingTrips.length)
   if (allUserTrips.upcomingTrips.length < 1) {
     noUpcomingTripsMessage.innerText =
       "You don't have any upcoming trips planned";
@@ -158,7 +146,6 @@ export const showChooseDestinationPage = (allDestinations) => {
 
   sortedDestinations.forEach((destination) => {
     if (destination.id !== 45) {
-      // console.log(destination.id)
       pickDestinationGrid.innerHTML += `<article class='pick-destination-card' id='${destination.id}'>
   <img class='pick-destination-card img' src='${destination.image}' alt='${destination.alt}'>
   <div class="card-text-wrapper">
@@ -177,11 +164,9 @@ export const backToMainPage = () => {
   resetPlanTripInput.forEach((item) => item.classList.add("hidden"));
   confirmationPage.forEach((item) => item.classList.add("hidden"));
   displayNumInputField.forEach((item) => item.classList.add("hidden"));
-  // resetPlanTripInput.forEach((item) => item.classList.add("hidden"));
-  // renderMainPage(allUserTrips, userTripDestinations);
-  numPeopleInput.value = '';
-  startDateInput.value = 'yyyy/mm/dd';
-  endDateInput.value = 'yyyy/mm/dd';
+  numPeopleInput.value = "";
+  startDateInput.value = "yyyy/mm/dd";
+  endDateInput.value = "yyyy/mm/dd";
 };
 
 export const captureDestinationID = (masterData, event) => {
@@ -198,42 +183,29 @@ export const displaySelectDateForTrip = () => {
   showUserTripPlanPage.classList.remove("hidden");
 };
 
-// export const displayAllowUserToSelectNumDays = () => {};
-
-// Function to set up the date inputs
 export function setupDateInputs() {
-  // Get the current date in the format "YYYY-MM-DD"
   const today = dayjs().format("YYYY-MM-DD");
-
-  // Set the value and min attributes of the date inputs to today's date
-  // startDateInput.value = today;
   startDateInput.min = today;
-  // endDateInput.value = today;
-  // endDateInput.min = today;
-
-  // Add event listener to start date input
   startDateInput.addEventListener("change", function () {
-    // Get the selected start date
     const selectedStartDate = startDateInput.value;
-
-    // Set the minimum date of end date input to the selected start date
 
     endDateInput.min = selectedStartDate;
     inputError.innerText = "";
-    inputError.innerText = "The end date must be after the spcified start date.";
-    // Check if the current selected end date is before the selected start date
+    inputError.innerText =
+      "The end date must be after the spcified start date.";
     if (endDateInput.value < selectedStartDate) {
-      // If it is, reset the end date to the selected start date
       endDateInput.value = selectedStartDate;
     }
   });
 }
 
-const numPeipleInputWreapper = document.querySelector('.select-num-people-wrapper');
+const numPeipleInputWreapper = document.querySelector(
+  ".select-num-people-wrapper"
+);
 export const displaySelectNumPeople = () => {
   inputError.innerText = "";
   displayNumInputField.forEach((item) => item.classList.remove("hidden"));
-  numPeipleInputWreapper.classList.remove("hidden")
+  numPeipleInputWreapper.classList.remove("hidden");
 };
 
 export const displayBookItButton = () => {
@@ -242,7 +214,6 @@ export const displayBookItButton = () => {
 
 export const displayUpcomingTrips = (allUserTrips, userTripDestinations) => {
   pastUserTripGrid.innerHTML = "";
-  console.log("here", allUserTrips.upcomingTrips);
 
   allUserTrips.pastTrips.forEach((trip) => {
     const currentTripDestination = userTripDestinations.find(
@@ -267,13 +238,11 @@ export const displayUpcomingTrips = (allUserTrips, userTripDestinations) => {
 
 const renderUpcomingTripsGrid = (allUserTrips, userTripDestinations) => {
   upcomingUserTripGrid.innerHTML = "";
-  // console.log(allUserTrips)
 
   allUserTrips.upcomingTrips.forEach((trip) => {
     const upcomingTripDestination = userTripDestinations.find(
       (destination) => destination.id === trip.destinationID
     );
-    // console.log(allUserTrips.upcomingTrips);
     const tripStartDate = dayjs(trip.date);
     const tripEndDate = tripStartDate.add(trip.duration, "day");
 
@@ -310,11 +279,7 @@ export const displayUserSpendingForThisYear = (
   }
 };
 
-
-
 export const checkUserNamePassword = (username, password) => {
-  // console.log("username", `traveler${currentUser.id}`);
-  console.log("password", password);
   if (username === "" && password == "") {
     errorMessage.innerText = "";
     errorMessage.innerText = "Please login to continue";
@@ -325,7 +290,7 @@ export const checkUserNamePassword = (username, password) => {
     errorMessage.innerText = "Please enter your username";
     return false;
   }
-  if(!validateUserLogin(username)) {
+  if (!validateUserLogin(username)) {
     errorMessage.innerText = "";
     errorMessage.innerText = "Please enter a valid user id";
     return false;
@@ -335,12 +300,6 @@ export const checkUserNamePassword = (username, password) => {
     errorMessage.innerText = "Please enter your password";
     return false;
   }
-  // if (username !== `traveler${currentUser.id}`) {
-  //   errorMessage.innerText = "";
-  //   errorMessage.innerText =
-  //     "The username you entered is incorrect, please try again";
-  //   return false;
-  // }
   if (password !== `travel`) {
     errorMessage.innerText = "";
     errorMessage.innerText =
@@ -357,7 +316,7 @@ export const checkUserTripInput = () => {
   if (!startDate || !endDate) {
     inputError.innerText = "";
     inputError.innerText = "Please enter a valid date to continue";
-    bookButton.classList.add('hidden');
+    bookButton.classList.add("hidden");
 
     return false;
   }
@@ -365,13 +324,9 @@ export const checkUserTripInput = () => {
     inputError.innerText = "";
     inputError.innerText =
       "Please specify the number of travelers there will be to continue";
-      bookButton.classList.add('hidden');
+    bookButton.classList.add("hidden");
 
     return false;
   }
   inputError.innerText = "";
 };
-
-
-
-

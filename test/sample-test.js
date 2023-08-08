@@ -11,13 +11,6 @@ import {
   validateUserLogin,
 } from "../src/functions";
 
-// describe('See if the tests are running', () => {
-//   it('should return true', () => {
-//     expect(true).to.equal(true);
-//   });
-// });
-
-
 describe('User trips', () => {
 let travelers;
 let trips;
@@ -175,7 +168,6 @@ describe('Destination', () => {
     ];
     user1Trips = findUsersTrips(1, trips);
     user2Trips = findUsersTrips(2, trips);
-    // console.log(user2Trips)
   });
   
   it('should return an array', () => {
@@ -219,13 +211,6 @@ describe('Trip cost', () => {
   let user1Destinations;
   let user2Destinations;
   beforeEach(() => {
-    // travelers = [
-    //   { name: "Dusty", id: 1 },
-    //   { name: "Matt", id: 2 },
-    //   { name: "Jocelyn", id: 3 },
-    //   { name: "Alex", id: 4 },
-    // ];
-
     trips = [
       {
         id: 1,

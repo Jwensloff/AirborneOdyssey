@@ -1,6 +1,5 @@
 const allTravelersURL = "http://localhost:3001/api/v1/travelers";
 const singleTravelerURL = "http://localhost:3001/api/v1/travelers/<id>";
-// where <id> will be the number of a travelers id
 const allTripsURL = "http://localhost:3001/api/v1/trips";
 const allDestinations = "http://localhost:3001/api/v1/destinations";
 
@@ -9,7 +8,6 @@ const urlArray = [allTravelersURL, allTripsURL, allDestinations];
 import { validateUserLogin } from "./functions";
 
 export let masterData = {
-  // currentUserId: 2,
   today: dayjs().format("YYYY/MM/DD"),
 };
 
@@ -18,9 +16,9 @@ export const createFetchRequests = () => {
   return urlArray.map((url) =>
     fetch(url)
       .then((response) => {
-        console.log(response)
+        console.log(response);
         if (!response.ok) {
-          throw new Error('Network response was not ok.');
+          throw new Error("Network response was not ok.");
         }
         return response.json();
       })
@@ -49,14 +47,16 @@ export const postUserTrip = (newTripObject) => {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then(response => {
-    console.log(response)
-    if (!response.ok) {
-      throw new Error('Network response was not ok.');
-    }
-    return response.json()})
-  .catch((error) => {
-    console.log(error);
-    throw error;
-  });
+  })
+    .then((response) => {
+      console.log(response);
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      console.log(error);
+      throw error;
+    });
 };
