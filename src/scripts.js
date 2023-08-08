@@ -44,6 +44,7 @@ import {
   seeAllTripsButton,
   displayUserSpendingForThisYear,
   main,
+  nav,
   checkUserNamePassword,
   checkUserTripInput,
   userNameElement,
@@ -99,8 +100,8 @@ loginButton.addEventListener("click", () => {
     } else {
       generateWebPage()
   showMainPage();
-  main.style.backgroundColor = "rgb(224, 218, 209)";
-  main.style.boxShadow = "0px 0px 9px 10px rgba(224, 218, 209)";
+  main.style.backgroundColor = "rgb(255, 255, 255, 0.7)";
+  nav.style.backgroundColor = "rgb(255, 255, 255, 0.7)";
   }
 });
 

@@ -50,8 +50,11 @@ export const postUserTrip = () => {
       "Content-Type": "application/json",
     },
   }).then(response => {
-    console.log('POST response', response)
-  })
+    console.log(response)
+    if (!response.ok) {
+      throw new Error('Network response was not ok.');
+    }
+    return response.json()})
   .catch((error) => {
     console.log(error);
     throw error;

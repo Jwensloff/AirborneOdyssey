@@ -5,6 +5,7 @@ import { calculateTotalUserSpending, validateUserLogin } from "./functions";
 
 // main
 export const main = document.querySelector("main");
+export const nav = document.querySelector("nav");
 
 // buttons
 export const loginButton = document.querySelector(".login-button");
@@ -87,7 +88,7 @@ export const displayConfirmationPage = (
   // )} through ${tripEndDate.format("MM/DD/YYYY")}`;
 
   displayNewTripTotalCost.innerText = "";
-  displayNewTripTotalCost.innerText = `Total cost: $ ${newTripCost}`;
+  displayNewTripTotalCost.innerText = `Total cost: $${newTripCost}`;
 
   displayNewTripImg.innerHTML = "";
   displayNewTripImg.innerHTML = `<img class='confirmation-page-image' 
