@@ -82,7 +82,7 @@ const generateWebPage = () => {
 
 // event listeners
 loginButton.addEventListener("click", () => {
-  let checkLogin =  checkUserNamePassword(masterData.currentUser);
+  let checkLogin = checkUserNamePassword(masterData.currentUser);
   if (checkLogin === false) {
   return;
   } else {
@@ -98,7 +98,6 @@ newTripButton.addEventListener("click", () => {
 
 homeButton.addEventListener("click", () => {
   backToMainPage();
-
   generateWebPage();
 });
 

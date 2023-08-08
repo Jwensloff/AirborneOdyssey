@@ -13,11 +13,10 @@ export const getCurrentUserInformation = (travelerID, travelersArray) => {
 
 export const findUsersTrips = (travelerID, tripsArray) => {
   const userTrips = tripsArray.filter((trip) => trip.userID === travelerID);
-  console.log('userTrips',userTrips)
-
   if(!userTrips || userTrips.length === 0){
     return 'The traveler id you entered does not match our records.'
   } else {
+    // console.log('userTrips', userTrips)
     return userTrips;
   }
 };
@@ -39,12 +38,10 @@ export const filterUserTripsByDate = (userTrips) => {
       allUserTrips.upcomingTrips.push(trip);
     }
   });
-  // console.log('allUserTrips from functions file',allUserTrips)
   return allUserTrips;
 };
 
 export const findUserTripDestinations = (findUserTrips, destinations) => {
-  // console.log('userTrips', findUserTrips)
   const userDestinations = findUserTrips.reduce((destinationArray, trip) => {
     destinations.forEach((destination) => {
       if (destination.id === trip.destinationID) {
@@ -53,7 +50,6 @@ export const findUserTripDestinations = (findUserTrips, destinations) => {
     });
     return destinationArray;
   }, []);
-  // console.log(userDestinations)
   return userDestinations;
 };
 
@@ -91,11 +87,11 @@ export const calculateTotalUserSpending = (findUsersTrips, findUserTripDestinati
 };
 
 export const calculateNewTripCost = (allDestinations) => {
- console.log(newTripObject)
+//  console.log(newTripObject)
   const newDestinaton = allDestinations.find(destination => destination.id === newTripObject.destinationID)
-  console.log('new destination',newDestinaton)
+  // console.log('new destination',newDestinaton)
   const lodgingCostPerDay = newDestinaton.estimatedLodgingCostPerDay * newTripObject.travelers
-  console.log(lodgingCostPerDay)
+  // console.log(lodgingCostPerDay)
   const totalCostOfLodging = lodgingCostPerDay * newTripObject.duration
 
   const totalCostOfFlights = newDestinaton.estimatedFlightCostPerPerson * newTripObject.travelers
