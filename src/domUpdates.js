@@ -34,7 +34,7 @@ const userName = document.querySelector(".user-name");
 const userSpending = document.querySelector(".display-user-spending");
 const pastUserTripGrid = document.querySelector(".past-user-trip-grid");
 const upcomingUserTripGrid = document.querySelector(".upcoming-trip-grid");
-
+const resetPlanTripInput = document.querySelectorAll('.reset');
 const displayNewTripCost = document.querySelector(
   ".display-upcoming-trip-cost"
 );
@@ -173,8 +173,14 @@ export const backToMainPage = () => {
   destinationSelectionItems.classList.add("hidden");
   dashboardItems.forEach((item) => item.classList.remove("hidden"));
   showUserTripPlanPage.classList.add("hidden");
+  resetPlanTripInput.forEach((item) => item.classList.add("hidden"));
   confirmationPage.forEach((item) => item.classList.add("hidden"));
+  displayNumInputField.forEach((item) => item.classList.add("hidden"));
+  // resetPlanTripInput.forEach((item) => item.classList.add("hidden"));
   // renderMainPage(allUserTrips, userTripDestinations);
+  numPeopleInput.value = '';
+  startDateInput.value = 'YYYY/MM/DD';
+  endDateInput.value = 'YYYY/MM/DD';
 };
 
 export const captureDestinationID = (masterData, event) => {
@@ -191,7 +197,7 @@ export const displaySelectDateForTrip = () => {
   showUserTripPlanPage.classList.remove("hidden");
 };
 
-export const displayAllowUserToSelectNumDays = () => {};
+// export const displayAllowUserToSelectNumDays = () => {};
 
 // Function to set up the date inputs
 export function setupDateInputs() {
@@ -202,7 +208,7 @@ export function setupDateInputs() {
   // startDateInput.value = today;
   startDateInput.min = today;
   // endDateInput.value = today;
-  endDateInput.min = today;
+  // endDateInput.min = today;
 
   // Add event listener to start date input
   startDateInput.addEventListener("change", function () {
@@ -220,8 +226,10 @@ export function setupDateInputs() {
   });
 }
 
+const numPeipleInputWreapper = document.querySelector('.select-num-people-wrapper');
 export const displaySelectNumPeople = () => {
-  displayNumInputField.forEach((item) => item.classList.toggle("hidden"));
+  displayNumInputField.forEach((item) => item.classList.remove("hidden"));
+  numPeipleInputWreapper.classList.remove("hidden")
 };
 
 export const displayBookItButton = () => {

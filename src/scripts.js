@@ -133,8 +133,8 @@ endDateInput.addEventListener("change", (event) => {
   let formattedEndDate = dayjs(selectedEndDate);
   let difference = formattedEndDate.diff(dayjs(newTripObject.date), "day");
   newTripObject.duration = parseInt(difference);
-  console.log(newTripObject);
   displaySelectNumPeople();
+  // displaySelectNumPeople();
   return newTripObject;
 });
 

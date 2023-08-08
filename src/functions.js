@@ -107,11 +107,16 @@ export const validateUserLogin = (username) => {
   // console.log('from functions',username)
   // console.log('from functions',typeof(username))
   const idBasedOnLogin = username.slice(8);
-  const id = Number(idBasedOnLogin)
+  const login = username.slice(0,8);
+  const id = Number(idBasedOnLogin);
   if(idBasedOnLogin < 1 || idBasedOnLogin > 50){
     // console.log('not between 50: idBasedOnLogin', idBasedOnLogin)
     return false
   } 
+  if(login !== 'traveler'){
+    console.log('not a validUsername')
+    return false
+  }
   if(!Number.isInteger(id)){
     console.log('not an integer: id', id)
     return false
