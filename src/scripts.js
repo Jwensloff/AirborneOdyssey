@@ -103,7 +103,7 @@ homeButton.addEventListener("click", () => {
 
 pickDestinationGrid.addEventListener("click", (event) => {
   newTripObject = captureDestinationID(masterData, event);
-  console.log(newTripObject);
+  console.log('newTripObject',newTripObject);
   displaySelectDateForTrip();
   setupDateInputs();
   return newTripObject;
@@ -169,7 +169,7 @@ bookButton.addEventListener("click", () => {
       const userTripsByDate = filterUserTripsByDate(userTrips);
       displayConfirmationPage(
         newTripObject,
-        calculateNewTripCost(masterData.destinations),
+        calculateNewTripCost(masterData.destinations, newTripObject),
         masterData.destinations
       );
     })
@@ -178,7 +178,6 @@ bookButton.addEventListener("click", () => {
   displaySelectNumPeople();
   bookButton.classList.add("hidden");
 });
-
 seeAllTripsButton.addEventListener("click", () => {
   backToMainPage();
   generateWebPage();

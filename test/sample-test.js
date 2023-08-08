@@ -42,6 +42,10 @@ let user4trips;
   user4trips = findUsersTrips(4, trips);
   }); 
 
+  it('should return an object', () => {
+    expect(getCurrentUserInformation(1, travelers)).to.be.an('object')
+  })
+
   it('Should return the correct traveler based on the current user id', () => {
     expect(getCurrentUserInformation(1, travelers)).to.deep.equal({name: 'Dusty', id:1});
   });
@@ -50,10 +54,18 @@ let user4trips;
     expect(getCurrentUserInformation(3, travelers)).to.deep.equal({name: 'Jocelyn', id:3})
   });
 
+  it('should return a string', () => {
+    expect(getCurrentUserInformation(5, travelers)).to.be.a('string')
+  });
+
   it('Should return a string if the traveler is not found', () => {
     expect(getCurrentUserInformation(5, travelers)).to.deep.equal('The traveler id you entered does not match our records.')
   });
  
+  it('should return an array', () => {
+    expect(findUsersTrips(1, trips)).to.be.an('array')
+  })
+
   it('Should return an array of trips the traveler went on', () => {
     expect(findUsersTrips(1, trips)).to.deep.equal([{id: 1, userID:1, date: '2000/05/01', duration: 2}]);
   });
@@ -64,8 +76,16 @@ let user4trips;
        {id: 3, userID:2, date: '2020/02/12', duration: 1}]);
   });
 
+  it('should return a string', () => {
+    expect(findUsersTrips(9, trips)).to.be.a('string')
+  });
+
   it('Should return a string if there aren\'t any trips that match the id', () => {
     expect(findUsersTrips(9, trips)).to.deep.equal('The traveler id you entered does not match our records.');
+  });
+
+  it('should return an object', () => {
+    expect(filterUserTripsByDate(user1Trips)).to.be.an('object')
   });
 
   it('Should return an object of user trips filtered by date', () => {
@@ -87,7 +107,7 @@ let user4trips;
 
 describe('Destination', () => {
   
-  let destinaitons;
+  let destinations;
   let travelers;
   let trips;
   let user1Trips;
@@ -132,7 +152,7 @@ describe('Destination', () => {
       },
     ];
     
-    destinaitons = [
+    destinations = [
       {
         id: 1,
         destination: "Sydney, Austrailia",
@@ -157,8 +177,12 @@ describe('Destination', () => {
     // console.log(user2Trips)
   });
   
+  it('should return an array', () => {
+    expect(findUserTripDestinations(user1Trips, destinations)).to.be.an('array')
+  })
+
   it('return an array of destinations associated with the traveler', () => {
-    expect(findUserTripDestinations(user1Trips, destinaitons)).to.deep.equal
+    expect(findUserTripDestinations(user1Trips, destinations)).to.deep.equal
     ([{
       id: 1,
       destination: "Sydney, Austrailia",
@@ -169,7 +193,7 @@ describe('Destination', () => {
   });
 
   it('return a different array of destinations associated with a different traveler', () => {
-    expect(findUserTripDestinations(user2Trips, destinaitons)).to.deep.equal
+    expect(findUserTripDestinations(user2Trips, destinations)).to.deep.equal
     ([ {
       id: 2,
       destination: "Cartagena, Colombia",
@@ -187,25 +211,26 @@ describe('Destination', () => {
 
 describe('Trip cost', () => {
   
-  let destinaitons;
-  let travelers;
+  let destinations;
   let trips;
   let user1Trips;
   let user2Trips;
-
+  let user1Destinations;
+  let user2Destinations;
   beforeEach(() => {
-    travelers = [
-      { name: "Dusty", id: 1 },
-      { name: "Matt", id: 2 },
-      { name: "Jocelyn", id: 3 },
-      { name: "Alex", id: 4 },
-    ];
+    // travelers = [
+    //   { name: "Dusty", id: 1 },
+    //   { name: "Matt", id: 2 },
+    //   { name: "Jocelyn", id: 3 },
+    //   { name: "Alex", id: 4 },
+    // ];
 
     trips = [
       {
         id: 1,
         userID: 1,
         destinationID: 1,
+        travelers: 3,
         date: "2000/05/01",
         duration: 2,
       },
@@ -213,6 +238,7 @@ describe('Trip cost', () => {
         id: 2,
         userID: 2,
         destinationID: 2,
+        travelers: 8,
         date: "2099/08/11",
         duration: 3,
       },
@@ -220,6 +246,7 @@ describe('Trip cost', () => {
         id: 3,
         userID: 2,
         destinationID:3, 
+        travelers: 1,
         date: "2020/02/12",
         duration: 1,
       },
@@ -227,12 +254,13 @@ describe('Trip cost', () => {
         id: 4,
         userID: 3,
         destinationID: 1,
+        travelers: 3,
         date: "2023/06/04",
         duration: 9,
       },
     ];
     
-    destinaitons = [
+    destinations = [
       {
         id: 1,
         destination: "Sydney, Austrailia",
@@ -254,10 +282,63 @@ describe('Trip cost', () => {
     ];
     user1Trips = findUsersTrips(1, trips);
     user2Trips = findUsersTrips(2, trips);
+    user1Destinations = findUserTripDestinations(user1Trips, destinations);
+    user2Destinations = findUserTripDestinations(user2Trips, destinations);
   });
   
+  it('should return a number', () => {
+    expect(calculateTotalUserSpending(user1Trips, user1Destinations)).to.be.an('number')
+  });
+
   it('should calculate the cost of all the user trips', () => {
-    expect(calculateTotalUserSpending).to.equal()
+    expect(calculateTotalUserSpending(user1Trips, user1Destinations)).to.equal(3993)
   })
 
+  it('should calculate the cost of all trips for a different user', () => {
+    expect(calculateTotalUserSpending(user2Trips, user2Destinations)).to.equal(5676)
+  })
+
+  it('should return a number', () => {
+    const newTripObject = {
+      date: '2055/11/15',
+      destinationID: 2,
+      duration: 5,
+      travelers: 7,
+      userID: 1,
+    };
+    expect(calculateNewTripCost(destinations, newTripObject)).to.be.an('number')
+  });
+
+  it('should calculate the cost of a new trip', () => {
+    const newTripObject = {
+      date: '2055/11/15',
+      destinationID: 2,
+      duration: 5,
+      travelers: 7,
+      userID: 1,
+    };
+  expect(calculateNewTripCost(destinations, newTripObject)).to.equal(5197.5)
+  });
+
+  it('should calculate the cost of a new trip for a different user', () => {
+    const newTripObject = {
+      date: '2049/11/15',
+      destinationID: 3,
+      duration: 8,
+      travelers: 2,
+      userID: 2,
+    };
+  expect(calculateNewTripCost(destinations, newTripObject)).to.equal(4070)
+  });
+
+  it('should calculate to 0', () => {
+    const newTripObject = {
+      date: '2049/11/15',
+      destinationID: 3,
+      duration: 6,
+      travelers: 0,
+      userID: 3,
+    };
+  expect(calculateNewTripCost(destinations, newTripObject)).to.equal(0)
+  });
 });

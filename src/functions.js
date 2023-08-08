@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 // import { newTripObject } from './scripts'
-export let newTripObject;
+// export let newTripObject;
 
 export const getCurrentUserInformation = (travelerID, travelersArray) => {
   let traveler = travelersArray.find((traveler) => traveler.id === travelerID);
@@ -77,8 +77,8 @@ export const calculateTotalUserSpending = (findUsersTrips, findUserTripDestinati
       }
     });
     const totalLodgingCost = costPerDay * travelDays;
-    
-    sum += flightCost + totalLodgingCost;
+    const totalFlightCost = flightCost*numTravelers
+    sum += totalFlightCost + totalLodgingCost;
     return sum;
   }, 0);
 
@@ -86,18 +86,15 @@ export const calculateTotalUserSpending = (findUsersTrips, findUserTripDestinati
   return totalCostWithTravelAgentFees;
 };
 
-export const calculateNewTripCost = (allDestinations) => {
+export const calculateNewTripCost = (allDestinations, newTripObject) => {
 //  console.log(newTripObject)
   const newDestinaton = allDestinations.find(destination => destination.id === newTripObject.destinationID)
-  // console.log('new destination',newDestinaton)
   const lodgingCostPerDay = newDestinaton.estimatedLodgingCostPerDay * newTripObject.travelers
-  // console.log(lodgingCostPerDay)
   const totalCostOfLodging = lodgingCostPerDay * newTripObject.duration
-
   const totalCostOfFlights = newDestinaton.estimatedFlightCostPerPerson * newTripObject.travelers
-  
   const newTripCost = totalCostOfFlights + totalCostOfLodging 
-  const travelersAgentFee = (newTripCost + 0.1*newTripCost)
+
+  const travelersAgentFee = (newTripCost * 0.1)
   const totalNewTripCost = newTripCost + travelersAgentFee
   return totalNewTripCost
 }
