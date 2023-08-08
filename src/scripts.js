@@ -16,7 +16,7 @@ import {
   calculateTotalUserSpending,
   filterUserTripsByDate,
   calculateNewTripCost,
-  newTripObject,
+  // newTripObject,
   validateUserLogin,
 } from "./functions";
 
@@ -114,7 +114,10 @@ homeButton.addEventListener("click", () => {
   generateWebPage();
 });
 
+let newTripObject 
+
 pickDestinationGrid.addEventListener("click", (event) => {
+
   newTripObject = captureDestinationID(masterData, event);
   console.log('newTripObject',newTripObject);
   displaySelectDateForTrip();
@@ -162,7 +165,7 @@ numPeopleInput.addEventListener("keyup", (event) => {
 });
 
 bookButton.addEventListener("click", () => {
-  postUserTrip()
+  postUserTrip(newTripObject)
     .then(() => {
       return fetch("http://localhost:3001/api/v1/trips");
     })

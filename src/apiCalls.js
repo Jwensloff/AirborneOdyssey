@@ -6,7 +6,7 @@ const allDestinations = "http://localhost:3001/api/v1/destinations";
 
 const urlArray = [allTravelersURL, allTripsURL, allDestinations];
 
-import { newTripObject, validateUserLogin } from "./functions";
+import { validateUserLogin } from "./functions";
 
 export let masterData = {
   // currentUserId: 2,
@@ -28,7 +28,7 @@ export const createFetchRequests = () => {
   );
 };
 
-export const postUserTrip = () => {
+export const postUserTrip = (newTripObject) => {
   console.log("from apiCalls file", newTripObject);
   let newID = masterData.trips.length + 1;
 
