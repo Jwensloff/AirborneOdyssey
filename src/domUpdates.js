@@ -1,10 +1,11 @@
 import dayjs from "dayjs";
-import { calculateTotalUserSpending } from "./functions";
+import { calculateTotalUserSpending, validateUserLogin } from "./functions";
 
 // query selectors
 
 // main
 export const main = document.querySelector("main");
+export const nav = document.querySelector("nav");
 
 // buttons
 export const loginButton = document.querySelector(".login-button");
@@ -17,8 +18,8 @@ export const seeAllTripsButton = document.querySelector(
 
 // user input
 export const inputError = document.querySelector(".input-error");
-const passwordElement = document.querySelector(".password-input");
-const userNameElement = document.querySelector(".username-input");
+export const passwordElement = document.querySelector(".password-input");
+export const userNameElement = document.querySelector(".username-input");
 
 export const errorMessage = document.querySelector(".error-message");
 export const startDateInput = document.getElementById("start-date-input");
@@ -34,7 +35,7 @@ const userName = document.querySelector(".user-name");
 const userSpending = document.querySelector(".display-user-spending");
 const pastUserTripGrid = document.querySelector(".past-user-trip-grid");
 const upcomingUserTripGrid = document.querySelector(".upcoming-trip-grid");
-
+const resetPlanTripInput = document.querySelectorAll('.reset');
 const displayNewTripCost = document.querySelector(
   ".display-upcoming-trip-cost"
 );
@@ -87,7 +88,7 @@ export const displayConfirmationPage = (
   // )} through ${tripEndDate.format("MM/DD/YYYY")}`;
 
   displayNewTripTotalCost.innerText = "";
-  displayNewTripTotalCost.innerText = `Total cost: $ ${newTripCost}`;
+  displayNewTripTotalCost.innerText = `Total cost: $${newTripCost}`;
 
   displayNewTripImg.innerHTML = "";
   displayNewTripImg.innerHTML = `<img class='confirmation-page-image' 
@@ -173,8 +174,14 @@ export const backToMainPage = () => {
   destinationSelectionItems.classList.add("hidden");
   dashboardItems.forEach((item) => item.classList.remove("hidden"));
   showUserTripPlanPage.classList.add("hidden");
+  resetPlanTripInput.forEach((item) => item.classList.add("hidden"));
   confirmationPage.forEach((item) => item.classList.add("hidden"));
+  displayNumInputField.forEach((item) => item.classList.add("hidden"));
+  // resetPlanTripInput.forEach((item) => item.classList.add("hidden"));
   // renderMainPage(allUserTrips, userTripDestinations);
+  numPeopleInput.value = '';
+  startDateInput.value = 'yyyy/mm/dd';
+  endDateInput.value = 'yyyy/mm/dd';
 };
 
 export const captureDestinationID = (masterData, event) => {
@@ -191,7 +198,7 @@ export const displaySelectDateForTrip = () => {
   showUserTripPlanPage.classList.remove("hidden");
 };
 
-export const displayAllowUserToSelectNumDays = () => {};
+// export const displayAllowUserToSelectNumDays = () => {};
 
 // Function to set up the date inputs
 export function setupDateInputs() {
@@ -199,10 +206,10 @@ export function setupDateInputs() {
   const today = dayjs().format("YYYY-MM-DD");
 
   // Set the value and min attributes of the date inputs to today's date
-  startDateInput.value = today;
+  // startDateInput.value = today;
   startDateInput.min = today;
-  endDateInput.value = today;
-  endDateInput.min = today;
+  // endDateInput.value = today;
+  // endDateInput.min = today;
 
   // Add event listener to start date input
   startDateInput.addEventListener("change", function () {
@@ -210,8 +217,10 @@ export function setupDateInputs() {
     const selectedStartDate = startDateInput.value;
 
     // Set the minimum date of end date input to the selected start date
-    endDateInput.min = selectedStartDate;
 
+    endDateInput.min = selectedStartDate;
+    inputError.innerText = "";
+    inputError.innerText = "The end date must be after the spcified start date.";
     // Check if the current selected end date is before the selected start date
     if (endDateInput.value < selectedStartDate) {
       // If it is, reset the end date to the selected start date
@@ -220,8 +229,11 @@ export function setupDateInputs() {
   });
 }
 
+const numPeipleInputWreapper = document.querySelector('.select-num-people-wrapper');
 export const displaySelectNumPeople = () => {
-  displayNumInputField.forEach((item) => item.classList.toggle("hidden"));
+  inputError.innerText = "";
+  displayNumInputField.forEach((item) => item.classList.remove("hidden"));
+  numPeipleInputWreapper.classList.remove("hidden")
 };
 
 export const displayBookItButton = () => {
@@ -298,10 +310,10 @@ export const displayUserSpendingForThisYear = (
   }
 };
 
-export const checkUserNamePassword = (currentUser) => {
-  let username = userNameElement.value;
-  let password = passwordElement.value;
-  console.log("username", `traveler${currentUser.id}`);
+
+
+export const checkUserNamePassword = (username, password) => {
+  // console.log("username", `traveler${currentUser.id}`);
   console.log("password", password);
   if (username === "" && password == "") {
     errorMessage.innerText = "";
@@ -313,17 +325,22 @@ export const checkUserNamePassword = (currentUser) => {
     errorMessage.innerText = "Please enter your username";
     return false;
   }
+  if(!validateUserLogin(username)) {
+    errorMessage.innerText = "";
+    errorMessage.innerText = "Please enter a valid user id";
+    return false;
+  }
   if (password === "") {
     errorMessage.innerText = "";
     errorMessage.innerText = "Please enter your password";
     return false;
   }
-  if (username !== `traveler${currentUser.id}`) {
-    errorMessage.innerText = "";
-    errorMessage.innerText =
-      "The username you entered is incorrect, please try again";
-    return false;
-  }
+  // if (username !== `traveler${currentUser.id}`) {
+  //   errorMessage.innerText = "";
+  //   errorMessage.innerText =
+  //     "The username you entered is incorrect, please try again";
+  //   return false;
+  // }
   if (password !== `travel`) {
     errorMessage.innerText = "";
     errorMessage.innerText =

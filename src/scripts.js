@@ -17,6 +17,7 @@ import {
   filterUserTripsByDate,
   calculateNewTripCost,
   newTripObject,
+  validateUserLogin,
 } from "./functions";
 
 import {
@@ -43,8 +44,11 @@ import {
   seeAllTripsButton,
   displayUserSpendingForThisYear,
   main,
+  nav,
   checkUserNamePassword,
   checkUserTripInput,
+  userNameElement,
+  passwordElement,
 } from "./domUpdates";
 
 // create Data
@@ -54,7 +58,7 @@ window.addEventListener("load", () => {
     masterData.travelers = promiseArray[0].travelers;
     masterData.trips = promiseArray[1].trips;
     masterData.destinations = promiseArray[2].destinations;
-    generateWebPage();
+    // generateWebPage();
   });
 });
 
@@ -64,8 +68,10 @@ const generateWebPage = () => {
     masterData.travelers
   );
   console.log("masterData", masterData.currentUser);
-
+console.log('masterData.currentUserId',masterData.currentUserId)
+console.log('masterData.trips',masterData.trips)
   const userTrips = findUsersTrips(masterData.currentUserId, masterData.trips);
+  
   const userTripsByDate = filterUserTripsByDate(userTrips);
   const userTripDestinations = findUserTripDestinations(
     userTrips,
@@ -82,13 +88,20 @@ const generateWebPage = () => {
 
 // event listeners
 loginButton.addEventListener("click", () => {
-  let checkLogin = checkUserNamePassword(masterData.currentUser);
-  if (checkLogin === false) {
-  return;
-  } else {
+  let username = userNameElement.value;
+  console.log('username', username)
+  console.log('typeof --->',typeof(username))
+ let id = Number(username.slice(8));
+ masterData.currentUserId = id
+    let password = passwordElement.value;
+    let checkLogin = checkUserNamePassword(username, password);
+    if (checkLogin === false) {
+      return;
+    } else {
+      generateWebPage()
   showMainPage();
-  main.style.backgroundColor = "rgb(224, 218, 209)";
-  main.style.boxShadow = "0px 0px 9px 10px rgba(224, 218, 209)";
+  main.style.backgroundColor = "rgb(255, 255, 255, 0.7)";
+  nav.style.backgroundColor = "rgb(255, 255, 255, 0.7)";
   }
 });
 
@@ -121,8 +134,8 @@ endDateInput.addEventListener("change", (event) => {
   let formattedEndDate = dayjs(selectedEndDate);
   let difference = formattedEndDate.diff(dayjs(newTripObject.date), "day");
   newTripObject.duration = parseInt(difference);
-  console.log(newTripObject);
   displaySelectNumPeople();
+  // displaySelectNumPeople();
   return newTripObject;
 });
 
@@ -155,7 +168,7 @@ bookButton.addEventListener("click", () => {
     })
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Network resposne was not ok.");
+        throw new Error("Network response was not ok.");
       }
       return response.json();
     })

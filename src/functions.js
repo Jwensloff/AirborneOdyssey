@@ -12,7 +12,11 @@ export const getCurrentUserInformation = (travelerID, travelersArray) => {
 };
 
 export const findUsersTrips = (travelerID, tripsArray) => {
+
   const userTrips = tripsArray.filter((trip) => trip.userID === travelerID);
+  console.log('travelerID', travelerID)
+  console.log('typeoftravelerID', typeof(travelerID))
+  console.log(tripsArray)
   if(!userTrips || userTrips.length === 0){
     return 'The traveler id you entered does not match our records.'
   } else {
@@ -26,7 +30,7 @@ export const filterUserTripsByDate = (userTrips) => {
     pastTrips: [],
     upcomingTrips: [],
   };
-
+  console.log('userTrips',userTrips)
   userTrips.forEach((trip) => {
     const today = dayjs().format("YYYY/MM/DD");
     const parsedCurrentDate = dayjs(today);
@@ -97,6 +101,27 @@ export const calculateNewTripCost = (allDestinations, newTripObject) => {
   const travelersAgentFee = (newTripCost * 0.1)
   const totalNewTripCost = newTripCost + travelersAgentFee
   return totalNewTripCost
+}
+
+export const validateUserLogin = (username) => {
+  // console.log('from functions',username)
+  // console.log('from functions',typeof(username))
+  const idBasedOnLogin = username.slice(8);
+  const login = username.slice(0,8);
+  const id = Number(idBasedOnLogin);
+  if(idBasedOnLogin < 1 || idBasedOnLogin > 50){
+    // console.log('not between 50: idBasedOnLogin', idBasedOnLogin)
+    return false
+  } 
+  if(login !== 'traveler'){
+    console.log('not a validUsername')
+    return false
+  }
+  if(!Number.isInteger(id)){
+    console.log('not an integer: id', id)
+    return false
+  } 
+    return true 
 }
 
 

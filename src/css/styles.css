@@ -3,7 +3,7 @@ body {
   font-family: "Raleway", sans-serif;
   margin: 0px;
   padding: 0px;
-  background-image: url("../images/chris-briggs-V72Hk6LjjjI-unsplash.jpg");
+  background-image: url("../images/ross-parmly-rf6ywHVkrlY-unsplash.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -321,8 +321,8 @@ button:hover {
 }
 
 .confirmation-page-image {
-  height: 400px;
-  width: 800px;
+  height: 350px;
+  width: auto;
 }
 
 .confirmation-page-text {
