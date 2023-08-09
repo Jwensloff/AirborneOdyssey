@@ -43,6 +43,7 @@ import {
   checkUserTripInput,
   userNameElement,
   passwordElement,
+  innerWrapper,
 } from "./domUpdates";
 
 let newTripObject;
@@ -87,8 +88,9 @@ loginButton.addEventListener("click", () => {
   } else {
     generateWebPage();
     showMainPage();
-    main.style.backgroundColor = "rgb(255, 255, 255, 0.7)";
-    nav.style.backgroundColor = "rgb(255, 255, 255, 0.7)";
+    innerWrapper.style.backgroundColor = "rgb(255, 255, 255, 0.7)";
+    main.style.backgroundColor = "rgb(255, 255, 255, 0.3)";
+    nav.style.backgroundColor = "rgb(255, 255, 255, 0.3)";
   }
 });
 

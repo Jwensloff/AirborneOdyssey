@@ -6,7 +6,7 @@ import { calculateTotalUserSpending, validateUserLogin } from "./functions";
 // main
 export const main = document.querySelector("main");
 export const nav = document.querySelector("nav");
-
+export const innerWrapper = document.querySelector('.inner-box');
 // buttons
 export const loginButton = document.querySelector(".login-button");
 export const newTripButton = document.querySelector(".new-trip-button");
@@ -149,10 +149,11 @@ export const showChooseDestinationPage = (allDestinations) => {
       pickDestinationGrid.innerHTML += `<article class='pick-destination-card' id='${destination.id}'>
   <img class='pick-destination-card img' src='${destination.image}' alt='${destination.alt}'>
   <div class="card-text-wrapper">
-  <h2>${destination.destination}</h2>
+  
+  <h2>${destination.destination}<i id='${destination.id}' class="fa-regular fa-square-check""></i></h2>
   <p> Lodging: $${destination.estimatedLodgingCostPerDay} per person</p>
   <p>Flight: $${destination.estimatedFlightCostPerPerson} per person</p>
-  <button class="select-destination-button" id='${destination.id}'>Select Location</button></article></div>`;
+  </article></div>`;
     }
   });
 };
@@ -165,6 +166,7 @@ export const backToMainPage = () => {
   confirmationPage.forEach((item) => item.classList.add("hidden"));
   displayNumInputField.forEach((item) => item.classList.add("hidden"));
   numPeopleInput.value = "";
+  inputError.innerText = "";
   startDateInput.value = "yyyy/mm/dd";
   endDateInput.value = "yyyy/mm/dd";
 };
@@ -172,7 +174,7 @@ export const backToMainPage = () => {
 export const captureDestinationID = (masterData, event) => {
   let newTripObject = {
     userID: parseInt(masterData.currentUser.id),
-    destinationID: parseInt(event.target.closest("button").id),
+    destinationID: parseInt(event.target.closest("i").id),
     status: "pending",
   };
   return newTripObject;
@@ -190,14 +192,14 @@ export function setupDateInputs() {
     const selectedStartDate = startDateInput.value;
 
     endDateInput.min = selectedStartDate;
-    inputError.innerText = "";
-    inputError.innerText =
-      "The end date must be after the spcified start date.";
-    if (endDateInput.value < selectedStartDate) {
-      endDateInput.value = selectedStartDate;
-    }
+    // inputError.innerText = "";
+    // inputError.innerText =
+    //   "The end date must be after the spcified start date.";
+    // if (endDateInput.value < selectedStartDate) {
+    //   endDateInput.value = selectedStartDate;
+    // };
   });
-}
+};
 
 const numPeipleInputWreapper = document.querySelector(
   ".select-num-people-wrapper"

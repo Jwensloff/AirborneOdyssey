@@ -29,84 +29,87 @@
         <i class="fa-solid fa-user login" style="color: #000000;"></i>Login</button>
     </div>
     <div class="main-nav-wrapper hidden">
-      <div class="left-nav-bar-section">
-        <button class="home-button main-nav-button"><i class="fa-solid fa-house" style="color: #000000;"></i>
-          Home</button>
-        <button class="new-trip-button main-nav-button"><i class="fa-solid fa-plane" style="color: #000000;"></i>Plan
-          your next
-          trip</button>
-      </div>
-      <div class="user-icon">
+      <h1>Airborne Odyssey</h1>
+      <div class="user-icon username-buttons">
         <label class="user-name">User Name</label>
+        <div class="left-nav-bar-section">
+          <button class="home-button main-nav-button"><i class="fa-solid fa-house" style="color: #000000;"></i>
+            Home</button>
+          <button class="new-trip-button main-nav-button"><i class="fa-solid fa-plane" style="color: #000000;"></i>Plan
+            your next
+            trip</button>
+        </div>
       </div>
     </div>
   </nav>
   <main class="main">
     <div class="main-wrapper">
-      <div class="welcome-text-wrapper login">
-        <div class="login-page login">
-          <h1>Airborne Odyssey</h1>
-          <p>Your travels start here</p>
+      <div class="inner-box">
+        <div class="welcome-text-wrapper login">
+          <div class="login-page login">
+            <h1>Airborne Odyssey</h1>
+            <p>Your travels start here</p>
+          </div>
         </div>
+        <section class="dashboard-page dashboard hidden">
+          <div class="user-stats-wrapper dashboard">
+            <h2 class="dashboard">Your travels summarized:</h2>
+            <div class="dashboard">
+              <p class="stat-text display-user-spending dashboard">You have spent --- on past bookings</p>
+              <p class=" stat-text display-upcoming-trip-cost dashboard">You have spent $0 on traveling this year.</p>
+            </div>
+          </div>
+          <div class="grid-wrapper dashboard">
+            <div class="upcoming-trip-grid-wrapper dashboard">
+              <h2 class="dashboard">Upcoming trips</h2>
+              <div class="upcoming-trip-grid dashboard">
+                <p class="no-upcoming-trip-message dashboard"></p>
+              </div>
+            </div class="dashboard">
+            <div class="past-trip-grid-wrapper dashboard">
+              <h2 class="dashboard">Past trips</h2>
+              <div class="past-user-trip-grid dashboard">
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="display-all-destinations destinations hidden">
+          <div class="destinations-grid-wrapper">
+            <h2>Where would you like to go?</h2>
+            <div class="destinations-grid">
+            </div>
+          </div>
+        </section>
+        <section class="user-plan-trip-page hidden">
+          <div class="plan-trip-wrapper">
+            <h2>When would you like to start?</h2>
+            <div class="select-date-wrapper">
+              <label for="start-date-input">Start date:</label>
+              <input class="date" type="date" name="start-date" id="start-date-input" value="" min="" />
+              <label for="end-date-input">End date:</label>
+              <input class="date" type="date" name="end-date" id="end-date-input" value="" min=""
+                placeholder="yyyy/mm/dd" />
+            </div>
+            <div class="reset select-num-people-wrapper">
+              <label class="select-num-people hidden">How many people are going?</label>
+              <input class="select-num-people hidden num-traveler-input" type="number" min="0" max="100" step="1">
+            </div>
+            <button class="reset book-button hidden">Book this trip!</button>
+            <p class="error-message input-error"></p>
+          </div>
+        </section>
+        <section class="confirmation-page hidden">
+          <div class="confirmation-page-wrapper">
+            <h2 class="confirmation-page hidden">Pack your bags!</h2>
+            <p class="confirmation-page-text confirmation-page hidden display-new-trip-location">You're going to
+              destination</p>
+            <p class="confirmation-page-text confirmation-page hidden display-new-trip-total-cost">Total cost:</p>
+            <button class="confirmation-page-text confirmation-page hidden see-all-trips-button">See all your
+              trips</button>
+            <div class="confirmation-page-text confirmation-page hidden display-new-trip-image"></div>
+          </div>
+        </section>
       </div>
-      <section class="dashboard-page dashboard hidden">
-        <div class="user-stats-wrapper dashboard">
-          <h2 class="dashboard">Your travels summarized:</h2>
-          <div class="dashboard">
-            <p class="stat-text display-user-spending dashboard">You have spent --- on past bookings</p>
-            <p class=" stat-text display-upcoming-trip-cost dashboard">You have spent $0 on traveling this year.</p>
-          </div>
-        </div>
-        <div class="grid-wrapper dashboard">
-          <div class="upcoming-trip-grid-wrapper dashboard">
-            <h2 class="dashboard">Upcoming trips</h2>
-            <div class="upcoming-trip-grid dashboard">
-              <p class="no-upcoming-trip-message dashboard"></p>
-            </div>
-          </div class="dashboard">
-          <div class="past-trip-grid-wrapper dashboard">
-            <h2 class="dashboard">Past trips</h2>
-            <div class="past-user-trip-grid dashboard">
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="display-all-destinations destinations hidden">
-        <div class="destinations-grid-wrapper">
-          <h2>Where would you like to go?</h2>
-          <div class="destinations-grid">
-          </div>
-        </div>
-      </section>
-      <section class="user-plan-trip-page hidden">
-        <div class="plan-trip-wrapper">
-          <h2>When would you like to start?</h2>
-          <div class="select-date-wrapper">
-            <label for="start-date-input">Start date:</label>
-            <input class="date" type="date" name="start-date" id="start-date-input" value="" min="" />
-            <label for="end-date-input">End date:</label>
-            <input class="date" type="date" name="end-date" id="end-date-input" value="" min=""
-              placeholder="yyyy/mm/dd" />
-          </div>
-          <div class="reset select-num-people-wrapper">
-            <label class="select-num-people hidden">How many people are going?</label>
-            <input class="select-num-people hidden num-traveler-input" type="number" min="0" max="100" step="1">
-          </div>
-          <button class="reset book-button hidden">Book this trip!</button>
-          <p class="error-message input-error"></p>
-        </div>
-      </section>
-      <section class="confirmation-page hidden">
-        <div class="confirmation-page-wrapper">
-          <h2 class="confirmation-page hidden">Pack your bags!</h2>
-          <p class="confirmation-page-text confirmation-page hidden display-new-trip-location">You're going to
-            destination</p>
-          <p class="confirmation-page-text confirmation-page hidden display-new-trip-total-cost">Total cost:</p>
-          <button class="confirmation-page-text confirmation-page hidden see-all-trips-button">See all your
-            trips</button>
-          <div class="confirmation-page-text confirmation-page hidden display-new-trip-image"></div>
-        </div>
-      </section>
     </div>
   </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
