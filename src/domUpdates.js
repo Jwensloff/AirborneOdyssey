@@ -192,12 +192,7 @@ export function setupDateInputs() {
     const selectedStartDate = startDateInput.value;
 
     endDateInput.min = selectedStartDate;
-    // inputError.innerText = "";
-    // inputError.innerText =
-    //   "The end date must be after the spcified start date.";
-    // if (endDateInput.value < selectedStartDate) {
-    //   endDateInput.value = selectedStartDate;
-    // };
+    
   });
 };
 
@@ -294,7 +289,7 @@ export const checkUserNamePassword = (username, password) => {
   }
   if (!validateUserLogin(username)) {
     errorMessage.innerText = "";
-    errorMessage.innerText = "Please enter a valid user id";
+    errorMessage.innerText = "The username or password you entered was incorrect";
     return false;
   }
   if (password === "") {
@@ -305,7 +300,7 @@ export const checkUserNamePassword = (username, password) => {
   if (password !== `travel`) {
     errorMessage.innerText = "";
     errorMessage.innerText =
-      "The password you entered is incorrect, please try again";
+      "The username or password you entered was incorrect";
     return false;
   }
 };
@@ -322,7 +317,7 @@ export const checkUserTripInput = () => {
 
     return false;
   }
-  if (!numTravelers || numTravelers === 0) {
+  if (!numTravelers || numTravelers === 0 || numTravelers < 0) {
     inputError.innerText = "";
     inputError.innerText =
       "Please specify the number of travelers there will be to continue";

@@ -99,16 +99,23 @@ export const calculateNewTripCost = (allDestinations, newTripObject) => {
 };
 
 export const validateUserLogin = (username) => {
+
   const idBasedOnLogin = username.slice(8);
   const login = username.slice(0, 8);
   const id = Number(idBasedOnLogin);
+
   if (idBasedOnLogin < 1 || idBasedOnLogin > 50) {
     return false;
   }
+
   if (login !== "traveler") {
     return false;
   }
+
   if (!Number.isInteger(id)) {
+    return false;
+  }
+  if(username !== login+id) {
     return false;
   }
   return true;

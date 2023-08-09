@@ -1,7 +1,6 @@
 const dayjs = require("dayjs");
 import "./css/styles.css";
 
-import "./images/turing-logo.png";
 
 import { createFetchRequests, postUserTrip, masterData } from "./apiCalls";
 
