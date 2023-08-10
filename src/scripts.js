@@ -1,11 +1,6 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 const dayjs = require("dayjs");
-// An example of how you tell webpack to use a CSS (SCSS) file
 import "./css/styles.css";
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import "./images/turing-logo.png";
 
 import { createFetchRequests, postUserTrip, masterData } from "./apiCalls";
 
@@ -16,8 +11,6 @@ import {
   calculateTotalUserSpending,
   filterUserTripsByDate,
   calculateNewTripCost,
-  // newTripObject,
-  validateUserLogin,
 } from "./functions";
 
 import {
@@ -49,16 +42,17 @@ import {
   checkUserTripInput,
   userNameElement,
   passwordElement,
+  innerWrapper,
 } from "./domUpdates";
 
-// create Data
+let newTripObject;
 
+// create Data
 window.addEventListener("load", () => {
   Promise.all(createFetchRequests()).then((promiseArray) => {
     masterData.travelers = promiseArray[0].travelers;
     masterData.trips = promiseArray[1].trips;
     masterData.destinations = promiseArray[2].destinations;
-    // generateWebPage();
   });
 });
 
@@ -67,17 +61,12 @@ const generateWebPage = () => {
     masterData.currentUserId,
     masterData.travelers
   );
-  console.log("masterData", masterData.currentUser);
-console.log('masterData.currentUserId',masterData.currentUserId)
-console.log('masterData.trips',masterData.trips)
   const userTrips = findUsersTrips(masterData.currentUserId, masterData.trips);
-  
   const userTripsByDate = filterUserTripsByDate(userTrips);
   const userTripDestinations = findUserTripDestinations(
     userTrips,
     masterData.destinations
   );
-
   displayUserName(masterData.currentUser);
   displayUserSpending(
     calculateTotalUserSpending(userTrips, userTripDestinations)
@@ -89,19 +78,18 @@ console.log('masterData.trips',masterData.trips)
 // event listeners
 loginButton.addEventListener("click", () => {
   let username = userNameElement.value;
-  console.log('username', username)
-  console.log('typeof --->',typeof(username))
- let id = Number(username.slice(8));
- masterData.currentUserId = id
-    let password = passwordElement.value;
-    let checkLogin = checkUserNamePassword(username, password);
-    if (checkLogin === false) {
-      return;
-    } else {
-      generateWebPage()
-  showMainPage();
-  main.style.backgroundColor = "rgb(255, 255, 255, 0.7)";
-  nav.style.backgroundColor = "rgb(255, 255, 255, 0.7)";
+  let id = Number(username.slice(8));
+  masterData.currentUserId = id;
+  let password = passwordElement.value;
+  let checkLogin = checkUserNamePassword(username, password);
+  if (checkLogin === false) {
+    return;
+  } else {
+    generateWebPage();
+    showMainPage();
+    innerWrapper.style.backgroundColor = "rgb(255, 255, 255, 0.7)";
+    main.style.backgroundColor = "rgb(255, 255, 255, 0.3)";
+    nav.style.backgroundColor = "rgb(255, 255, 255, 0.3)";
   }
 });
 
@@ -114,12 +102,8 @@ homeButton.addEventListener("click", () => {
   generateWebPage();
 });
 
-let newTripObject 
-
 pickDestinationGrid.addEventListener("click", (event) => {
-
   newTripObject = captureDestinationID(masterData, event);
-  console.log('newTripObject',newTripObject);
   displaySelectDateForTrip();
   setupDateInputs();
   return newTripObject;
@@ -138,14 +122,12 @@ endDateInput.addEventListener("change", (event) => {
   let difference = formattedEndDate.diff(dayjs(newTripObject.date), "day");
   newTripObject.duration = parseInt(difference);
   displaySelectNumPeople();
-  // displaySelectNumPeople();
   return newTripObject;
 });
 
 numPeopleInput.addEventListener("change", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
-  console.log(newTripObject);
   if (checkUserTripInput() === false) {
     return;
   } else {
@@ -156,7 +138,6 @@ numPeopleInput.addEventListener("change", (event) => {
 numPeopleInput.addEventListener("keyup", (event) => {
   const numPeople = parseInt(event.target.value);
   newTripObject.travelers = numPeople;
-  console.log(newTripObject);
   if (checkUserTripInput() === false) {
     return;
   } else {
@@ -176,7 +157,6 @@ bookButton.addEventListener("click", () => {
       return response.json();
     })
     .then((data) => {
-      // console.log("all trips", data);
       masterData.trips = data.trips;
       const userTrips = findUsersTrips(
         masterData.currentUserId,
@@ -189,11 +169,12 @@ bookButton.addEventListener("click", () => {
         masterData.destinations
       );
     })
-    .catch((error) => console.log('Error', error));
+    .catch((error) => console.log("Error", error));
 
   displaySelectNumPeople();
   bookButton.classList.add("hidden");
 });
+
 seeAllTripsButton.addEventListener("click", () => {
   backToMainPage();
   generateWebPage();

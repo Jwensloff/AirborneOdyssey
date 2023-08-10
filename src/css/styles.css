@@ -13,7 +13,7 @@ body {
 }
 
 main {
-  background-color: rgb(255, 255, 255, 0.4);
+  background-color: rgb(175, 199, 237, 0.3);
 }
 
 nav {
@@ -35,8 +35,23 @@ nav {
   overflow: hidden;
 }
 
+.inner-box{
+   margin-top: 10px;
+   width: 100%;
+   height: 95%;
+}
+
 .login-input {
   height: 90%;
+}
+
+.user-name{
+  margin-bottom: 5px;
+}
+
+.username-buttons{
+  display: flex;
+  flex-direction: column;
 }
 
 .login-page {
@@ -46,7 +61,12 @@ nav {
   flex-direction: column;
   align-items: center;
   align-items: left;
-  width:100%;
+  width: 100%;
+}
+
+h1{
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .login-page > h1 {
@@ -71,7 +91,8 @@ h2 {
 
 .left-nav-bar-section {
   display: flex;
-  height: 50%;
+  height: 35px;
+  justify-content: flex-end;
 }
 
 .main-nav-button {
@@ -87,9 +108,6 @@ h2 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* padding-top: 20vh; */
-  /* justify-content: center; */
-  /* align-items: flex-end; */
 }
 
 .main-nav-wrapper {
@@ -120,8 +138,11 @@ h2 {
   justify-content: flex-end;
 }
 
+.fa-regular,
 .fa-solid {
+  color:black;
   margin-right: 5px;
+  margin-left: 10px;
 }
 
 .user-icon {
@@ -135,7 +156,7 @@ h2 {
 
 .user-stats-wrapper {
   width: 65%;
-  height: 8vh;
+  height: 10vh;
   margin-top: 10px;
   margin-bottom: 40px;
   display: flex;
@@ -171,6 +192,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .upcoming-trip-grid,
@@ -179,9 +201,15 @@ h2 {
   height: 55vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   overflow-y: scroll;
   grid-column-gap: 20px;
   padding: 20px;
+}
+
+.upcoming-trip-grid::-webkit-scrollbar,
+.past-user-trip-grid::-webkit-scrollbar {
+  display: none; 
 }
 
 .pick-destination-card,
@@ -191,7 +219,7 @@ h2 {
   display: flex;
   color: black;
   height: 120px;
-  width: 500px;
+  width: 550px;
   flex-shrink: 0;
   margin-bottom: 15px;
 }
@@ -225,6 +253,7 @@ h2 {
 .book-button {
   height: 40px;
   width: 130px;
+  margin-top: 25px;
 }
 
 button,
@@ -258,8 +287,12 @@ input {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  max-height: 80vh;
+  max-height: 70vh;
   overflow-y: scroll;
+}
+
+.destinations-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .pick-destination-card > p {
@@ -279,6 +312,7 @@ button:hover {
 
 .plan-trip-wrapper {
   font-family: "Work Sans", sans-serif;
+  background-color: rgb(255, 255, 255, 0.7);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -305,14 +339,28 @@ button:hover {
   margin-left: 5px;
 }
 
+.fa-square-check:hover{
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.confirmation-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 .confirmation-page-wrapper {
   font-family: "Work Sans", sans-serif;
+  background-color: rgb(255, 255, 255, 0.7);
+  width:60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 5px;
-  margin-bottom: 5px;
+  padding-bottom: 20px;
 }
 
 .confirmation-page-wrapper > button {
@@ -330,7 +378,7 @@ button:hover {
   margin-bottom: 5px;
 }
 
-.error-message{
+.error-message {
   margin-right: 10px;
   font-weight: 600;
 }
