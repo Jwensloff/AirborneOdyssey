@@ -1,7 +1,6 @@
-const allTravelersURL = "http://localhost:3001/api/v1/travelers";
-const singleTravelerURL = "http://localhost:3001/api/v1/travelers/<id>";
-const allTripsURL = "http://localhost:3001/api/v1/trips";
-const allDestinations = "http://localhost:3001/api/v1/destinations";
+const allTravelersURL = "https://airborne-odyssey-fc6kohqgk-jwensloff.vercel.app/api/v1/travelers";
+const allTripsURL = "https://airborne-odyssey-fc6kohqgk-jwensloff.vercel.app/api/v1/trips";
+const allDestinations = "https://airborne-odyssey-fc6kohqgk-jwensloff.vercel.app/api/v1/destinations";
 
 const urlArray = [allTravelersURL, allTripsURL, allDestinations];
 
