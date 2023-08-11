@@ -148,7 +148,7 @@ numPeopleInput.addEventListener("keyup", (event) => {
 bookButton.addEventListener("click", () => {
   postUserTrip(newTripObject)
     .then(() => {
-      return fetch("http://localhost:3001/api/v1/trips");
+      return fetch("https://airborne-odyssey-fc6kohqgk-jwensloff.vercel.app/api/v1/trips");
     })
     .then((response) => {
       if (!response.ok) {
