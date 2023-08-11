@@ -509,10 +509,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "postUserTrip": () => (/* binding */ postUserTrip)
 /* harmony export */ });
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
-const allTravelersURL = "http://localhost:3001/api/v1/travelers";
-const singleTravelerURL = "http://localhost:3001/api/v1/travelers/<id>";
-const allTripsURL = "http://localhost:3001/api/v1/trips";
-const allDestinations = "http://localhost:3001/api/v1/destinations";
+const allTravelersURL = "https://airborne-odyssey-fc6kohqgk-jwensloff.vercel.app/api/v1/travelers";
+const allTripsURL = "https://airborne-odyssey-fc6kohqgk-jwensloff.vercel.app/api/v1/trips";
+const allDestinations = "https://airborne-odyssey-fc6kohqgk-jwensloff.vercel.app/api/v1/destinations";
 
 const urlArray = [allTravelersURL, allTripsURL, allDestinations];
 
@@ -1280,7 +1279,7 @@ _domUpdates__WEBPACK_IMPORTED_MODULE_3__.numPeopleInput.addEventListener("keyup"
 _domUpdates__WEBPACK_IMPORTED_MODULE_3__.bookButton.addEventListener("click", () => {
   (0,_apiCalls__WEBPACK_IMPORTED_MODULE_1__.postUserTrip)(newTripObject)
     .then(() => {
-      return fetch("http://localhost:3001/api/v1/trips");
+      return fetch("https://airborne-odyssey-fc6kohqgk-jwensloff.vercel.app/api/v1/trips");
     })
     .then((response) => {
       if (!response.ok) {
